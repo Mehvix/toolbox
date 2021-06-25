@@ -1,0 +1,40 @@
+select,
+input,
+datalist {
+    background-color: var(--code-bg-color);
+    color: var(--inside-bg-color);
+    border-radius: 5px;
+    font-size: var(--font-size);
+    height: 1.8em;
+    padding: 0.5ch 0.5ch 0.5ch 0.75ch;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    vertical-align: middle;
+    width: 10ch;
+    font-family: "PT Mono";
+}
+
+span.bandbox {
+    height: 1.8em;
+    width: 1.8em;
+    background-color: var(--band-black);
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    border-radius: 0.66ch;
+    margin: 0 0.5ch;
+}
+
+/* Excludes "Bands:" label */
+tr:not(:first-child) {
+    counter-increment: list-number;
+}
+
+/* We hide Band #3 (the third digit) if we are counting Four bands. If we labeled in static html, we'd have Band 1, ... 2, ... 4, ... 5 (missing 3) BUT if we do it like this in CSS, the counter doesn't count hidden elements!*/
+article > table tr:not(:first-child) td:nth-child(1)::after {
+    content: counter(list-number) ":  ";
+}
