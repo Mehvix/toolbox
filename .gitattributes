@@ -1,1 +1,2 @@
 *.js linguist-language=TypeScript
+docs/ linguist-vendored=false
