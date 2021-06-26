@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://www.mehvix.com/static/css/style.css"
+        />
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://www.mehvix.com/static/css/atom-one-dark-reasonable.css"
+        />
+        <link type="text/css" rel="stylesheet" href="index.css" />
+
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Blog RSS"
+            href="https://mehvix.com/posts/rss.xml"
+        />
+
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>"
+        />
+
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/highlight.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+        <meta charset="utf-8" />
+        <title>Mehvix | Screw and Drill Helper</title>
+        <style>
+            :root {
+                --outside-bg-color: rgb(103, 102, 201);
+            }
+
+            /* todo move this to seperate css file */
+            select,
+            input,
+            datalist {
+                background-color: var(--code-bg-color);
+                color: var(--inside-bg-color);
+                border-radius: 5px;
+                font-size: var(--font-size);
+                height: 1.8em !important;
+                padding: 0.5ch 0.5ch 0.5ch 0.75ch;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -o-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                box-sizing: border-box;
+                border: none;
+                vertical-align: middle;
+                width: 10ch;
+                font-family: "PT Mono";
+            }
+
+            select:focus,
+            input:focus,
+            datalist:focus {
+                outline: 2px solid var(--outside-bg-color);
+            }
+
+            #results {
+                margin-top: 0.5em;
+                margin-left: 2ch;
+            }
+
+            #results div {
+                margin-top: 0.3em;
+            }
+
+            #results div b::before {
+                content: "> ";
+            }
+            #results div b::after {
+                content: ": ";
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <div class="nav">
+                <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a
+                >/<a href="" class="inverse-bg">Screw and Drill Helper</a>
+            </div>
+
+            <article>
+                Given a
+                <select name="region" id="region" style="width: 12ch">
+                    <option value="Imperial">Imperial</option>
+                    <option value="Metric">Metric</option>
+                </select>
+                screw of size
+                <select name="sizes" id="sizes" style="width: 9ch"></select
+                >, you will need a drill:
+
+                <div id="results">
+                    <div>
+                        <b>Clearance – Close</b>
+                        <span id="needed-clearance-close"></span>
+                    </div>
+                    <div>
+                        <b>Clearance – Free</b>
+                        <span id="needed-clearance-free"></span>
+                    </div>
+                    <div>
+                        <b>Tap - 50%</b>
+                        <span id="needed-tap-50"></span>
+                    </div>
+                    <div>
+                        <b>Tap – 75$</b>
+                        <span id="needed-tap-75"></span>
+                    </div>
+                </div>
+            </article>
+
+            <div id="footer">
+                <table id="footerTable">
+                    <tr>
+                        <td>$BTC</td>
+                        <td>
+                            <a href="btc:15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1">
+                                15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$ETH</td>
+                        <td>
+                            <a
+                                href="eth:0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74"
+                                >0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$XMR</td>
+                        <td class="cryptoaddy" style="max-width: inherit">
+                            <a
+                                href="xmr:45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ"
+                                class="cryptoaddy"
+                            >
+                                45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="footerDateYear">2021</td>
+                        <td>Max Vogel</td>
+                    </tr>
+                </table>
+                <script src="index.js"></script>
+                <script src="https://www.mehvix.com/static/js/include.js"></script>
+            </div>
+        </div>
+    </body>
+</html>

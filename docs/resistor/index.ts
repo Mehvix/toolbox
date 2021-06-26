@@ -81,8 +81,6 @@ class Band {
                 break;
         }
     }
-
-
 }
 
 // Init Bands
@@ -94,7 +92,7 @@ const band5 = new Band(5)
 const band6 = new Band(6)
 
 // Init HTML references
-const bands = <HTMLInputElement>document.getElementById("bands")
+const bands: HTMLInputElement = document.getElementById("bands") as HTMLInputElement
 
 // Set bands to six by default
 bands.value = "6"
@@ -107,6 +105,9 @@ interface HTMLElementEventMap { "input": InputEvent }
 
 // Update number of bands when number changed
 bands.addEventListener("input", (ev: InputEvent) => {
+    function showElement(el: HTMLElement) { el.removeAttribute("style") }
+    function hideElement(el: HTMLElement) { el.setAttribute("style", "display:none") }
+
     let numBands: number = parseInt(bands.value!);  // for some reason event doesn't have input data so we get it this way
 
     if (numBands == 6) {
@@ -121,9 +122,6 @@ bands.addEventListener("input", (ev: InputEvent) => {
     }
 
     updateResults()
-
-    function showElement(el: HTMLElement) { el.removeAttribute("style") }
-    function hideElement(el: HTMLElement) { el.setAttribute("style", "display:none") }
 })
 
 function setColor(el: HTMLElement, color: string) {
@@ -148,6 +146,8 @@ function setColor(el: HTMLElement, color: string) {
 }
 
 function updateResults() {
+    function setValue(el: HTMLSpanElement, data: string) { el.innerHTML = data }
+
     const bandCount = <HTMLSpanElement>document.getElementById("band-count")
     // const resistanceDigits = <HTMLSpanElement>document.getElementById("resistance-digits")
     const resistance = <HTMLSpanElement>document.getElementById("resistance")
@@ -165,6 +165,4 @@ function updateResults() {
     setValue(temp, bands.value == "6" ? ` and a temperature coefficient of <b>${band6.value}</b> ppm.` : ".")
 
 
-    function setValue(el: HTMLSpanElement, data: string) { el.innerHTML = data }
-    // todo make this not replace content, use write func
 }

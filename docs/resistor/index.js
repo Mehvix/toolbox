@@ -156,6 +156,8 @@ bands.value = "6";
 window.onload = () => { bands.dispatchEvent(new InputEvent("input", { 'data': bands.value })), updateResults(); };
 // Update number of bands when number changed
 bands.addEventListener("input", (ev) => {
+    function showElement(el) { el.removeAttribute("style"); }
+    function hideElement(el) { el.setAttribute("style", "display:none"); }
     let numBands = parseInt(bands.value); // for some reason event doesn't have input data so we get it this way
     if (numBands == 6) {
         showElement(band3.tr);
@@ -170,8 +172,6 @@ bands.addEventListener("input", (ev) => {
         hideElement(band6.tr);
     }
     updateResults();
-    function showElement(el) { el.removeAttribute("style"); }
-    function hideElement(el) { el.setAttribute("style", "display:none"); }
 });
 function setColor(el, color) {
     let val;
@@ -220,6 +220,7 @@ function setColor(el, color) {
     el.setAttribute("style", `background-color: ${val}`);
 }
 function updateResults() {
+    function setValue(el, data) { el.innerHTML = data; }
     const bandCount = document.getElementById("band-count");
     // const resistanceDigits = <HTMLSpanElement>document.getElementById("resistance-digits")
     const resistance = document.getElementById("resistance");
@@ -233,7 +234,5 @@ function updateResults() {
     setValue(tolerance, `${band5.value}`);
     setValue(toleranceValue, `${Math.round((band5.value * resist * 0.01) * 100000) / 100000}`);
     setValue(temp, bands.value == "6" ? ` and a temperature coefficient of <b>${band6.value}</b> ppm.` : ".");
-    function setValue(el, data) { el.innerHTML = data; }
-    // todo make this not replace content, use write func
 }
 //# sourceMappingURL=index.js.map
