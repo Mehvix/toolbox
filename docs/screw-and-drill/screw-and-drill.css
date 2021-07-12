@@ -1,0 +1,15 @@
+#results {
+    margin-top: 1em;
+    margin-left: 2ch;
+}
+
+#results div {
+    margin-top: 0.3em;
+}
+
+#results div b::before {
+    content: "* ";
+}
+#results div b::after {
+    content: ": ";
+}

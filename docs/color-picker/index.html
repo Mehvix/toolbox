@@ -11,6 +11,8 @@
             rel="stylesheet"
             href="https://www.mehvix.com/static/css/atom-one-dark-reasonable.css"
         />
+        <link type="text/css" rel="stylesheet" href="color-picker.css" />
+        <link type="text/css" rel="stylesheet" href="../main.css" />
 
         <link
             rel="alternate"
@@ -28,17 +30,11 @@
         <script>
             hljs.initHighlightingOnLoad();
         </script>
-        <script src="https://www.mehvix.com/static/js/include.js"></script>
-        <script src="index.js"></script>
         <meta charset="utf-8" />
-        <title>Mehvix | Toolbox</title>
+        <title>Mehvix | Color Picker</title>
         <style>
             :root {
-                --outside-bg-color: #e4c200;
-            }
-
-            article tr > td:nth-of-type(1)::before {
-                content: "* ";
+                --outside-bg-color: rgb(124, 166, 190);
             }
         </style>
     </head>
@@ -46,52 +42,92 @@
     <body>
         <div class="box">
             <div class="nav">
-                <a href="https://www.mehvix.com">~</a>/<a
-                    href=""
-                    class="inverse-bg"
-                    >Toolbox</a
-                >
+                <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a
+                >/<a href="" class="inverse-bg">Color Picker</a>
             </div>
 
             <article>
+                <div style="text-align: center">
+                    <input type="color" name="picker" id="picker" />
+                </div>
+
                 <table>
                     <tr>
-                        <td><a href="resistor/">Resistor Calculator</a></td>
-                    </tr>
-
-                    <tr>
                         <td>
-                            <a href="screw-and-drill/"
-                                >Screw and Drill Helper</a
-                            >
+                            Hex:
+                            <input id="hex" />
                         </td>
                     </tr>
                     <tr>
-                        <td><a href="color-picker/">Color Converter</a></td>
+                        <td>
+                            RGB:
+                            <input
+                                id="rgb-r"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="rgb-g"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="rgb-b"
+                                type="number"
+                                min="0"
+                                max="255"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            HSV:
+                            <input
+                                id="hsv-h"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="hsv-s"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="hsv-v"
+                                type="number"
+                                min="0"
+                                max="255"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            HSL:
+                            <input
+                                id="hsl-h"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="hsl-s"
+                                type="number"
+                                min="0"
+                                max="255"
+                            /><input
+                                id="hsl-l"
+                                type="number"
+                                min="0"
+                                max="255"
+                            />
+                        </td>
                     </tr>
                     <!--<tr>
                         <td>
-                            <a href="poker/">Poker Odds</a>
+                            CMYK:
+                            <input id="hsv" />
                         </td>
-                    </tr>
-
-                     <tr>
-                        <td><a href="morse/">Morse Code Decipher</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="gearbox/">Gearbox Calculator</a></td>
                     </tr> -->
                 </table>
-
-                <br />
-                <br />
-                <div>
-                    <a href="http://github.com/mehvix/toolbox">Source Code</a>
-                    (<a
-                        href="https://github.com/Mehvix/toolbox/blob/master/LICENSE"
-                        >AGPLv3</a
-                    >)
-                </div>
             </article>
 
             <div id="footer">
@@ -129,6 +165,8 @@
                         <td>Max Vogel</td>
                     </tr>
                 </table>
+                <script src="color-picker.js"></script>
+                <script src="https://www.mehvix.com/static/js/include.js"></script>
             </div>
         </div>
     </body>

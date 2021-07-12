@@ -1,3 +1,5 @@
-*.js linguist-language=TypeScript
-docs/* linguist-vendored=false
-docs/* linguist-documentation=false
+# https://github.com/github/linguist/blob/master/docs/overrides.md
+*.js linguist-generated=true
+docs/** linguist-detectable=true
+docs/** linguist-vendored=false
+docs/** linguist-documentation=false

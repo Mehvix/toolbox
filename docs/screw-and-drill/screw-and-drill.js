@@ -181,4 +181,4 @@ updateSizes();
 updateResult();
 region.addEventListener("change", updateSizes);
 sizes.addEventListener("change", updateResult);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=screw-and-drill.js.map

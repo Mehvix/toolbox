@@ -163,6 +163,4 @@ function updateResults() {
     setValue(tolerance, `${band5.value}`)
     setValue(toleranceValue, `${Math.round((band5.value * resist * 0.01) * 100000) / 100000}`)
     setValue(temp, bands.value == "6" ? ` and a temperature coefficient of <b>${band6.value}</b> ppm.` : ".")
-
-
 }
