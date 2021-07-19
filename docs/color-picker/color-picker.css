@@ -23,11 +23,16 @@
     width: 4.5ch;
 }
 
-/* Hide scroller */
+/* Hide scroller -- Chrome */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* Hide scroller -- Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 td:nth-of-type(2) {

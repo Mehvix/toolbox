@@ -1,6 +1,4 @@
 "use strict";
-class InputClass {
-}
 function hex2rgb(data) {
     var result = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data);
     return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
@@ -12,13 +10,6 @@ function rgb2hex(rgb) {
         return hex.length == 1 ? "0" + hex : hex;
     }
     return `#${hexConvert(r)}${hexConvert(g)}${hexConvert(b)}`;
-}
-function randRGB() {
-    function rand255() {
-        let val = Math.floor(Math.random() * (99));
-        return val < 10 ? "0" + val : val.toString();
-    }
-    return `#${rand255()}${rand255()}${rand255()}`;
 }
 // https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
 function rgb2hsvsl(rgb) {
@@ -128,78 +119,76 @@ function hsl2rgb(hsl) {
     b = Math.round((b + light) * 255);
     return [r, g, b];
 }
-document.addEventListener("DOMContentLoaded", function () {
-    // Init elements + listners
-    const input = document.getElementById("picker");
-    const hex = document.getElementById("hex");
-    const rgb_r = document.getElementById("rgb-r");
-    const rgb_b = document.getElementById("rgb-b");
-    const rgb_g = document.getElementById("rgb-g");
-    const hsv_h = document.getElementById("hsv-h");
-    const hsv_s = document.getElementById("hsv-s");
-    const hsv_v = document.getElementById("hsv-v");
-    const hsl_h = document.getElementById("hsl-h");
-    const hsl_s = document.getElementById("hsl-s");
-    const hsl_l = document.getElementById("hsl-l");
-    input.addEventListener("change", function () { update("input"); });
-    hex.addEventListener("change", function () { update("hex"); });
-    rgb_r.addEventListener("change", function () { update("rgb"); });
-    rgb_b.addEventListener("change", function () { update("rgb"); });
-    rgb_g.addEventListener("change", function () { update("rgb"); });
-    hsv_h.addEventListener("change", function () { update("hsv"); });
-    hsv_s.addEventListener("change", function () { update("hsv"); });
-    hsv_v.addEventListener("change", function () { update("hsv"); });
-    hsl_h.addEventListener("change", function () { update("hsl"); });
-    hsl_s.addEventListener("change", function () { update("hsl"); });
-    hsl_l.addEventListener("change", function () { update("hsl"); });
-    // Set random color + update
-    input.value = randRGB();
-    window.onload = () => { input.dispatchEvent(new InputEvent("change")); };
-    // update values in "realtime"
-    let inputFocused = false;
-    input.onfocus = function () { inputFocused = true; };
-    input.onblur = function () { inputFocused = false; };
-    let hexFocused = false;
-    hex.onfocus = function () { hexFocused = true; };
-    hex.onblur = function () { hexFocused = false; };
-    setInterval(function () {
-        if (inputFocused)
-            update("input");
-        if (hexFocused)
-            update("hex");
-    }, 50);
-    function update(src) {
+class InputClass {
+    id;
+    // todo write
+    input;
+    focused;
+    constructor(id) {
+        this.id = id;
+        this.input = document.getElementById(id);
+        this.focused = false;
+        this.input.addEventListener("change", () => this.update());
+        this.input.addEventListener("focus", () => this.focused = true);
+        this.input.addEventListener("blur", () => this.focused = false);
+        if (this.id == "picker") {
+            function rand255() {
+                let val = Math.floor(Math.random() * (99));
+                return val < 10 ? "0" + val : val.toString();
+            }
+            this.input.value = `#${rand255()}${rand255()}${rand255()}`;
+            window.onload = () => { this.input.dispatchEvent(new InputEvent("change")); };
+        }
+    }
+    update() {
+        let picker = document.getElementById("picker");
+        let hex = document.getElementById("hex");
+        let rgb_r = document.getElementById("rgb-r");
+        let rgb_b = document.getElementById("rgb-b");
+        let rgb_g = document.getElementById("rgb-g");
+        let hsv_h = document.getElementById("hsv-h");
+        let hsv_s = document.getElementById("hsv-s");
+        let hsv_v = document.getElementById("hsv-v");
+        let hsl_h = document.getElementById("hsl-h");
+        let hsl_s = document.getElementById("hsl-s");
+        let hsl_l = document.getElementById("hsl-l");
         let hexVal = "-1";
         let rgb_arr = [-1, -1, -1];
         let hsvsl_arr = [-1, -1, -1, -1, -1];
-        switch (src) {
+        switch (this.id) {
             case "hex":
-                hexVal = hex.value;
+                hexVal = this.input.value;
                 rgb_arr = hex2rgb(hexVal);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
-            case "rgb":
+            case "rgb-r":
+            case "rgb-g":
+            case "rgb-b":
                 rgb_arr = [parseInt(rgb_r.value), parseInt(rgb_g.value), parseInt(rgb_b.value)];
                 hexVal = rgb2hex(rgb_arr);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
-            case "hsv":
+            case "hsv-h":
+            case "hsv-s":
+            case "hsv-v":
                 rgb_arr = hsv2rgb([parseInt(hsv_h.value), parseInt(hsv_s.value), parseInt(hsv_v.value)]);
                 hexVal = rgb2hex(rgb_arr);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
-            case "hsl":
+            case "hsl-h":
+            case "hsl-s":
+            case "hsl-l":
                 rgb_arr = hsl2rgb([parseInt(hsl_h.value), parseInt(hsl_s.value), parseInt(hsl_l.value)]);
                 hexVal = rgb2hex(rgb_arr);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
-            default: // input
-                hexVal = input.value;
+            default: // picker
+                hexVal = this.input.value;
                 rgb_arr = hex2rgb(hexVal);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
         }
-        input.value = hexVal;
+        picker.value = hexVal;
         hex.value = hexVal;
         rgb_r.value = rgb_arr[0].toString();
         rgb_g.value = rgb_arr[1].toString();
@@ -212,5 +201,24 @@ document.addEventListener("DOMContentLoaded", function () {
         hsl_l.value = hsvsl_arr[4].toString();
         document.documentElement.style.setProperty('--outside-bg-color', hex.value);
     }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    // Init inputs
+    const picker = new InputClass("picker");
+    const hex = new InputClass("hex");
+    const rgb_r = new InputClass("rgb-r");
+    const rgb_b = new InputClass("rgb-b");
+    const rgb_g = new InputClass("rgb-g");
+    const hsv_h = new InputClass("hsv-h");
+    const hsv_s = new InputClass("hsv-s");
+    const hsv_v = new InputClass("hsv-v");
+    const hsl_h = new InputClass("hsl-h");
+    const hsl_s = new InputClass("hsl-s");
+    const hsl_l = new InputClass("hsl-l");
+    // todo come back to this
+    // setInterval(function () {
+    //     if (this.focused) update()
+    //     if (this.focused) update()
+    // }, 50)
 });
 //# sourceMappingURL=color-picker.js.map

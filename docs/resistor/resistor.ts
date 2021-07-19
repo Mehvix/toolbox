@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         span: HTMLSpanElement
         value: number;
 
-        constructor(
-            public num: number
-        ) {
+        constructor(public num: number) {
             this.input = <HTMLSelectElement>document.getElementById(`band${num}`)
             this.input.options.selectedIndex = Math.floor(Math.random() * (this.input.options.length - 1))  // select random color
             this.tr = this.input.parentElement!.parentElement! as HTMLTableRowElement;
@@ -23,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
             })
         }
 
-        public getColor(): string {  // otherwise variable doesn't update til after event
+        private getColor(): string {  // otherwise variable doesn't update til after event
             return this.input.value
         }
 
-        public updateValue(): void {
+        private updateValue(): void {
             switch (this.getColor().toLowerCase()) {
                 case "black":
                     if (this.num == 1 || this.num == 2 || this.num == 3) { this.value = 0 }
@@ -105,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     interface HTMLElementEventMap { "input": InputEvent }
 
     // Update number of bands when number changed
-    bands.addEventListener("input", (ev: InputEvent) => {
+    bands.addEventListener("input", (ev) => {
         function showElement(el: HTMLElement) { el.removeAttribute("style") }
         function hideElement(el: HTMLElement) { el.setAttribute("style", "display:none") }
 

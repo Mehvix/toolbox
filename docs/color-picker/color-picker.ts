@@ -1,13 +1,3 @@
-class InputClass {
-    // todo write
-
-
-    // element (get id)
-    // ele value
-    // update if selected
-    // init listners
-}
-
 function hex2rgb(data: string): [number, number, number] {
     var result = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data)!
     return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)]
@@ -24,13 +14,6 @@ function rgb2hex(rgb: [number, number, number]): string {
     return `#${hexConvert(r)}${hexConvert(g)}${hexConvert(b)}`;
 }
 
-function randRGB(): string {
-    function rand255() {
-        let val: number = Math.floor(Math.random() * (99))
-        return val < 10 ? "0" + val : val.toString()
-    }
-    return `#${rand255()}${rand255()}${rand255()}`
-}
 
 // https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
 function rgb2hsvsl(rgb: [number, number, number]): [number, number, number, number, number] {
@@ -120,86 +103,80 @@ function hsl2rgb(hsl: [number, number, number]): [number, number, number] {
     return [r, g, b]
 }
 
-document.addEventListener("DOMContentLoaded",  function () {
-    // Init elements + listners
-    const input: HTMLInputElement = document.getElementById("picker") as HTMLInputElement
-    const hex: HTMLInputElement = document.getElementById("hex") as HTMLInputElement
-    const rgb_r: HTMLInputElement = document.getElementById("rgb-r") as HTMLInputElement
-    const rgb_b: HTMLInputElement = document.getElementById("rgb-b") as HTMLInputElement
-    const rgb_g: HTMLInputElement = document.getElementById("rgb-g") as HTMLInputElement
-    const hsv_h: HTMLInputElement = document.getElementById("hsv-h") as HTMLInputElement
-    const hsv_s: HTMLInputElement = document.getElementById("hsv-s") as HTMLInputElement
-    const hsv_v: HTMLInputElement = document.getElementById("hsv-v") as HTMLInputElement
-    const hsl_h: HTMLInputElement = document.getElementById("hsl-h") as HTMLInputElement
-    const hsl_s: HTMLInputElement = document.getElementById("hsl-s") as HTMLInputElement
-    const hsl_l: HTMLInputElement = document.getElementById("hsl-l") as HTMLInputElement
+class InputClass {
+    // todo write
+    input: HTMLInputElement
+    focused: boolean
 
+    constructor(public id: string) {
+        this.input = <HTMLInputElement>document.getElementById(id)
+        this.focused = false
+        this.input.addEventListener("change", () => this.update())
+        this.input.addEventListener("focus", () => this.focused = true)
+        this.input.addEventListener("blur", () => this.focused = false)
 
-    input.addEventListener("change", function () { update("input") })
-    hex.addEventListener("change", function () { update("hex") })
-    rgb_r.addEventListener("change", function () { update("rgb") })
-    rgb_b.addEventListener("change", function () { update("rgb") })
-    rgb_g.addEventListener("change", function () { update("rgb") })
-    hsv_h.addEventListener("change", function () { update("hsv") })
-    hsv_s.addEventListener("change", function () { update("hsv") })
-    hsv_v.addEventListener("change", function () { update("hsv") })
-    hsl_h.addEventListener("change", function () { update("hsl") })
-    hsl_s.addEventListener("change", function () { update("hsl") })
-    hsl_l.addEventListener("change", function () { update("hsl") })
+        if (this.id == "picker") {
+            function rand255() {
+                let val: number = Math.floor(Math.random() * (99))
+                return val < 10 ? "0" + val : val.toString()
+            }
+            this.input.value = `#${rand255()}${rand255()}${rand255()}`
+            window.onload = () => { this.input.dispatchEvent(new InputEvent("change")) }
+        }
+    }
 
+    private update(): void {
+        let picker = <HTMLInputElement>document.getElementById("picker")
+        let hex = <HTMLInputElement>document.getElementById("hex")
+        let rgb_r = <HTMLInputElement>document.getElementById("rgb-r")
+        let rgb_b = <HTMLInputElement>document.getElementById("rgb-b")
+        let rgb_g = <HTMLInputElement>document.getElementById("rgb-g")
+        let hsv_h = <HTMLInputElement>document.getElementById("hsv-h")
+        let hsv_s = <HTMLInputElement>document.getElementById("hsv-s")
+        let hsv_v = <HTMLInputElement>document.getElementById("hsv-v")
+        let hsl_h = <HTMLInputElement>document.getElementById("hsl-h")
+        let hsl_s = <HTMLInputElement>document.getElementById("hsl-s")
+        let hsl_l = <HTMLInputElement>document.getElementById("hsl-l")
 
-    // Set random color + update
-    input.value = randRGB()
-    window.onload = () => { input.dispatchEvent(new InputEvent("change")) }
-
-    // update values in "realtime"
-    let inputFocused: Boolean = false
-    input.onfocus = function () { inputFocused = true }
-    input.onblur = function () { inputFocused = false }
-
-    let hexFocused: Boolean = false
-    hex.onfocus = function () { hexFocused = true }
-    hex.onblur = function () { hexFocused = false }
-
-    setInterval(function () {
-        if (inputFocused) update("input")
-        if (hexFocused) update("hex")
-    }, 50)
-
-    function update(src: string): void {
         let hexVal: string = "-1"
         let rgb_arr: [number, number, number] = [-1, -1, -1]
         let hsvsl_arr: [number, number, number, number, number] = [-1, -1, -1, -1, -1]
 
-        switch (src) {
+        switch (this.id) {
             case "hex":
-                hexVal = hex.value
+                hexVal = this.input.value
                 rgb_arr = hex2rgb(hexVal)
                 hsvsl_arr = rgb2hsvsl(rgb_arr)
                 break
-            case "rgb":
+            case "rgb-r":
+            case "rgb-g":
+            case "rgb-b":
                 rgb_arr = [parseInt(rgb_r.value), parseInt(rgb_g.value), parseInt(rgb_b.value)]
                 hexVal = rgb2hex(rgb_arr)
                 hsvsl_arr = rgb2hsvsl(rgb_arr)
                 break
-            case "hsv":
+            case "hsv-h":
+            case "hsv-s":
+            case "hsv-v":
                 rgb_arr = hsv2rgb([parseInt(hsv_h.value), parseInt(hsv_s.value), parseInt(hsv_v.value)])
                 hexVal = rgb2hex(rgb_arr)
                 hsvsl_arr = rgb2hsvsl(rgb_arr)
                 break
-            case "hsl":
+            case "hsl-h":
+            case "hsl-s":
+            case "hsl-l":
                 rgb_arr = hsl2rgb([parseInt(hsl_h.value), parseInt(hsl_s.value), parseInt(hsl_l.value)])
                 hexVal = rgb2hex(rgb_arr)
                 hsvsl_arr = rgb2hsvsl(rgb_arr)
                 break
-            default: // input
-                hexVal = input.value
+            default: // picker
+                hexVal = this.input.value
                 rgb_arr = hex2rgb(hexVal)
                 hsvsl_arr = rgb2hsvsl(rgb_arr)
                 break
         }
 
-        input.value = hexVal
+        picker.value = hexVal
 
         hex.value = hexVal
 
@@ -217,4 +194,26 @@ document.addEventListener("DOMContentLoaded",  function () {
 
         document.documentElement.style.setProperty('--outside-bg-color', hex.value);
     }
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Init inputs
+    const picker = new InputClass("picker")
+    const hex = new InputClass("hex")
+    const rgb_r = new InputClass("rgb-r")
+    const rgb_b = new InputClass("rgb-b")
+    const rgb_g = new InputClass("rgb-g")
+    const hsv_h = new InputClass("hsv-h")
+    const hsv_s = new InputClass("hsv-s")
+    const hsv_v = new InputClass("hsv-v")
+    const hsl_h = new InputClass("hsl-h")
+    const hsl_s = new InputClass("hsl-s")
+    const hsl_l = new InputClass("hsl-l")
+
+    // todo come back to this
+    // setInterval(function () {
+    //     if (this.focused) update()
+    //     if (this.focused) update()
+    // }, 50)
 })
