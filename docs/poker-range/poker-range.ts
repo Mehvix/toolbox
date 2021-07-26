@@ -16,12 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // todo agh this doesn't work with other variants. simulate hands to get EV rank?
     function updateSelects(): void {
         let max = Math.round((parseFloat(slider.value) * permus) / 100);
+        let hands: string = "";
 
         for (let i = 0; i < max; i++) {
             let id = EV[i];
             let el = document.getElementById(id) as HTMLTableCellElement;
             el.classList.add("selected");
+            hands += EV[i] + ", ";
         }
+
+        document.getElementById("hands")!.innerText = hands.slice(0, -2) + " ";
 
         for (let i = max; i < permus; i++) {
             let id = EV[i];

@@ -67,7 +67,7 @@
 
 #bottom {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -76,7 +76,17 @@
     text-align: center;
 }
 
-#hands {
-    flex-grow: 1;
+#hands-cont {
+    flex-basis: 2;
     margin: 0 1em;
+    display: table-cell;
+    text-align: center;
+}
+
+#hands {
+    overflow: scroll;
+    width: 46ch;
+    height: 2.7em;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 }
