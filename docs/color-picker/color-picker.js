@@ -8,15 +8,17 @@ class InputClass {
         this.input = document.getElementById(id);
         this.focused = false;
         this.input.addEventListener("change", () => this.update());
-        this.input.addEventListener("focus", () => this.focused = true);
-        this.input.addEventListener("blur", () => this.focused = false);
+        this.input.addEventListener("focus", () => (this.focused = true));
+        this.input.addEventListener("blur", () => (this.focused = false));
         if (this.id == "picker") {
             function rand255() {
-                let val = Math.floor(Math.random() * (99));
+                let val = Math.floor(Math.random() * 99);
                 return val < 10 ? "0" + val : val.toString();
             }
             this.input.value = `#${rand255()}${rand255()}${rand255()}`;
-            window.onload = () => { this.input.dispatchEvent(new InputEvent("change")); };
+            window.onload = () => {
+                this.input.dispatchEvent(new InputEvent("change"));
+            };
         }
     }
     update() {
@@ -34,7 +36,7 @@ class InputClass {
         }
         // https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
         function rgb2hsvsl(rgb) {
-            let norm = rgb.map(Number => Number / 255);
+            let norm = rgb.map((Number) => Number / 255);
             let r = norm[0], g = norm[1], b = norm[2];
             let max = Math.max(...norm);
             let min = Math.min(...norm);
@@ -72,7 +74,7 @@ class InputClass {
             let sat = hsl[1] / 100;
             let bright = hsl[2] / 100;
             let chroma = (1 - Math.abs(2 * bright - 1)) * sat;
-            let mid = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+            let mid = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
             let light = bright - chroma / 2;
             let r = -1, g = -1, b = -1;
             if (0 <= hue && hue < 60) {
@@ -112,31 +114,31 @@ class InputClass {
         }
         // https://en.wikipedia.org/wiki/HSL_and_HSV#To_RGB
         function hsv2rgb(hsv) {
-            let norm = hsv.map(Number => Number / 255);
+            let norm = hsv.map((Number) => Number / 255);
             let hue = norm[0] * 255;
             let sat = norm[1];
             let val = norm[2];
             let chroma = (1 - Math.abs(2 * val - 1)) * sat;
-            let mid = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+            let mid = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
             let light = val - chroma / 2;
             let r = -1, g = -1, b = -1;
             if (0 <= hue && hue < 60) {
-                r = chroma, g = mid, b = 0;
+                (r = chroma), (g = mid), (b = 0);
             }
             else if (60 <= hue && hue < 120) {
-                r = mid, g = chroma, b = 0;
+                (r = mid), (g = chroma), (b = 0);
             }
             else if (120 <= hue && hue < 180) {
-                r = 0, g = chroma, b = mid;
+                (r = 0), (g = chroma), (b = mid);
             }
             else if (180 <= hue && hue < 240) {
-                r = 0, g = mid, b = chroma;
+                (r = 0), (g = mid), (b = chroma);
             }
             else if (240 <= hue && hue < 300) {
-                r = mid, g = 0, b = chroma;
+                (r = mid), (g = 0), (b = chroma);
             }
             else if (300 <= hue && hue < 360) {
-                r = chroma, g = 0, b = mid;
+                (r = chroma), (g = 0), (b = mid);
             }
             r = Math.round((r + light) * 255);
             g = Math.round((g + light) * 255);
@@ -184,7 +186,8 @@ class InputClass {
                 hexVal = rgb2hex(rgb_arr);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
                 break;
-            default: // picker
+            default:
+                // picker
                 hexVal = this.input.value;
                 rgb_arr = hex2rgb(hexVal);
                 hsvsl_arr = rgb2hsvsl(rgb_arr);
@@ -212,7 +215,7 @@ class InputClass {
         hsl_h.value = hsvsl_arr[0].toString();
         hsv_h.value = hsvsl_arr[0].toString();
         // update bg
-        document.documentElement.style.setProperty('--outside-bg-color', hex.value);
+        document.documentElement.style.setProperty("--outside-bg-color", hex.value);
     }
 }
 document.addEventListener("DOMContentLoaded", function () {

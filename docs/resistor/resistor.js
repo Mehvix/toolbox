@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             });
         }
         getColor() {
+            // otherwise variable doesn't update til after event
             return this.input.value;
         }
         updateValue() {
@@ -154,11 +155,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Set bands to six by default
     bands.value = "6";
     // Update number of bands on load
-    window.onload = () => { bands.dispatchEvent(new InputEvent("input", { 'data': bands.value })), updateResults(); };
+    window.onload = () => {
+        bands.dispatchEvent(new InputEvent("input", { data: bands.value })), updateResults();
+    };
     // Update number of bands when number changed
     bands.addEventListener("input", (ev) => {
-        function showElement(el) { el.removeAttribute("style"); }
-        function hideElement(el) { el.setAttribute("style", "display:none"); }
+        function showElement(el) {
+            el.removeAttribute("style");
+        }
+        function hideElement(el) {
+            el.setAttribute("style", "display:none");
+        }
         let numBands = parseInt(bands.value); // for some reason event doesn't have input data so we get it this way
         if (numBands == 6) {
             showElement(band3.tr);
@@ -216,24 +223,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case "white":
                 val = "#ffffff";
                 break;
-            default: val = "#00ff9d";
+            default:
+                val = "#00ff9d";
         }
         el.setAttribute("style", `background-color: ${val}`);
     }
     function updateResults() {
-        function setValue(el, data) { el.innerHTML = data; }
+        function setValue(el, data) {
+            el.innerHTML = data;
+        }
         const bandCount = document.getElementById("band-count");
         // const resistanceDigits = <HTMLSpanElement>document.getElementById("resistance-digits")
         const resistance = document.getElementById("resistance");
         const tolerance = document.getElementById("tolerance");
         const toleranceValue = document.getElementById("tolerance-value");
         const temp = document.getElementById("temp");
-        const resist = bands.value == "4" ? (band1.value * 10 + band2.value) * band4.value : (band1.value * 100 + band2.value * 10 + band3.value) * band4.value;
+        const resist = bands.value == "4"
+            ? (band1.value * 10 + band2.value) * band4.value
+            : (band1.value * 100 + band2.value * 10 + band3.value) * band4.value;
         setValue(bandCount, `${parseInt(bands.value)}`);
         // setValue(resistanceDigits, bands.value == "4" ? "2" : "3")
         setValue(resistance, `${Math.round(resist * 100000) / 100000}`); // round to five places
         setValue(tolerance, `${band5.value}`);
-        setValue(toleranceValue, `${Math.round((band5.value * resist * 0.01) * 100000) / 100000}`);
+        setValue(toleranceValue, `${Math.round(band5.value * resist * 0.01 * 100000) / 100000}`);
         setValue(temp, bands.value == "6" ? ` and a temperature coefficient of <b>${band6.value}</b> ppm.` : ".");
     }
 });

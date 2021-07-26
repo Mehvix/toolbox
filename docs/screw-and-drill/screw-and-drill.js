@@ -47,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         sizes.innerHTML = options.join();
     }
     function updateResult() {
-        function updateSpan(span, data) { span.innerHTML = data; }
+        function updateSpan(span, data) {
+            span.innerHTML = data;
+        }
         let clearanceClose = "[todo]";
         let clearanceFree = "[todo]";
         let tap50 = "[todo]";

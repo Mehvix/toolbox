@@ -1,11 +1,13 @@
 select,
 input,
 datalist,
-span.input {
+span.input,
+pre > code {
     background-color: var(--code-bg-color);
     color: var(--inside-bg-color);
     border-radius: 5px;
     font-size: var(--font-size);
+    vertical-align: middle;
     height: 1.8em;
     padding: 0.5ch 0.5ch 0.5ch 0.75ch;
     -webkit-box-sizing: border-box;
@@ -17,5 +19,3 @@ span.input {
     vertical-align: middle;
     font-family: "PT Mono";
 }
-
-

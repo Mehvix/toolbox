@@ -1,0 +1,82 @@
+:root {
+    --select-bg: #90ee90;
+    --select-board: #acf2ac;
+}
+
+.range_table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2em auto;
+}
+
+.range_table td {
+    width: 3ch;
+    height: 3ch;
+    text-align: center;
+    font-size: 1em;
+    cursor: crosshair;
+    border-style: outset;
+    border-width: 1px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.range_table td:hover {
+    filter: brightness(80%);
+    -webkit-filter: brightness(80%);
+    -webkit-transition: all 100ms ease;
+    -moz-transition: all 100ms ease;
+    -o-transition: all 100ms ease;
+    -ms-transition: all 100ms ease;
+    transition: all 100ms ease;
+}
+
+.suited {
+    background-color: rgb(177, 177, 177);
+    border-color: rgb(230, 230, 230);
+}
+
+.offsuit {
+    background-color: #d3d3d3;
+    border-color: rgb(230, 230, 230);
+}
+
+.pair {
+    background-color: #808080;
+    border-color: rgb(230, 230, 230);
+}
+
+.range_table td.suited.selected {
+    background-color: var(--select-bg);
+    border-color: var(--select-board);
+    border-style: inset;
+}
+
+.range_table td.offsuit.selected {
+    background-color: var(--select-bg);
+    border-color: var(--select-board);
+    border-style: inset;
+}
+
+.range_table td.pair.selected {
+    background-color: var(--select-bg);
+    border-color: var(--select-board);
+    border-style: inset;
+}
+
+#bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#num {
+    width: 10.5ch;
+    text-align: center;
+}
+
+#hands {
+    flex-grow: 1;
+    margin: 0 1em;
+}

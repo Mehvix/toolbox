@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "typescript": "^4.4.0-dev.20210622"
+  },
+  "dependencies": {
+    "nouislider": "^15.2.0"
   }
 }
