@@ -74,6 +74,7 @@
 #num {
     width: 10.5ch;
     text-align: center;
+    height: 2.7em;
 }
 
 #hands-cont {
@@ -89,4 +90,8 @@
     height: 2.7em;
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
+}
+
+#hands::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
 }
