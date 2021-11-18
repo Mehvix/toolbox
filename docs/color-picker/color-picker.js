@@ -3,6 +3,7 @@ class InputClass {
     id;
     input;
     focused;
+
     constructor(id) {
         this.id = id;
         this.input = document.getElementById(id);
@@ -10,6 +11,7 @@ class InputClass {
         this.input.addEventListener("change", () => this.update());
         this.input.addEventListener("focus", () => (this.focused = true));
         this.input.addEventListener("blur", () => (this.focused = false));
+
         if (this.id == "picker") {
             function rand255() {
                 let val = Math.floor(Math.random() * 99);
@@ -21,13 +23,16 @@ class InputClass {
             };
         }
     }
+
     update() {
         function hex2rgb(data) {
             var result = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data);
             return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
         }
         function rgb2hex(rgb) {
-            let r = rgb[0], g = rgb[1], b = rgb[2];
+            let r = rgb[0],
+                g = rgb[1],
+                b = rgb[2];
             function hexConvert(c) {
                 var hex = c.toString(16);
                 return hex.length == 1 ? "0" + hex : hex;
@@ -37,7 +42,9 @@ class InputClass {
         // https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
         function rgb2hsvsl(rgb) {
             let norm = rgb.map((Number) => Number / 255);
-            let r = norm[0], g = norm[1], b = norm[2];
+            let r = norm[0],
+                g = norm[1],
+                b = norm[2];
             let max = Math.max(...norm);
             let min = Math.min(...norm);
             let range = max - min;
@@ -56,8 +63,7 @@ class InputClass {
                         break;
                 }
                 hue = Math.round(hue * 60);
-                if (hue < 0)
-                    hue += 360;
+                if (hue < 0) hue += 360;
             }
             let light = mid;
             let satL = range == 0 ? 0 : range / (1 - Math.abs(2 * light - 1));
@@ -76,33 +82,30 @@ class InputClass {
             let chroma = (1 - Math.abs(2 * bright - 1)) * sat;
             let mid = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
             let light = bright - chroma / 2;
-            let r = -1, g = -1, b = -1;
+            let r = -1,
+                g = -1,
+                b = -1;
             if (0 <= hue && hue < 60) {
                 r = chroma;
                 g = mid;
                 b = 0;
-            }
-            else if (60 <= hue && hue < 120) {
+            } else if (60 <= hue && hue < 120) {
                 r = mid;
                 g = chroma;
                 b = 0;
-            }
-            else if (120 <= hue && hue < 180) {
+            } else if (120 <= hue && hue < 180) {
                 r = 0;
                 g = chroma;
                 b = mid;
-            }
-            else if (180 <= hue && hue < 240) {
+            } else if (180 <= hue && hue < 240) {
                 r = 0;
                 g = mid;
                 b = chroma;
-            }
-            else if (240 <= hue && hue < 300) {
+            } else if (240 <= hue && hue < 300) {
                 r = mid;
                 g = 0;
                 b = chroma;
-            }
-            else if (300 <= hue && hue < 360) {
+            } else if (300 <= hue && hue < 360) {
                 r = chroma;
                 g = 0;
                 b = mid;
@@ -121,23 +124,20 @@ class InputClass {
             let chroma = (1 - Math.abs(2 * val - 1)) * sat;
             let mid = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
             let light = val - chroma / 2;
-            let r = -1, g = -1, b = -1;
+            let r = -1,
+                g = -1,
+                b = -1;
             if (0 <= hue && hue < 60) {
                 (r = chroma), (g = mid), (b = 0);
-            }
-            else if (60 <= hue && hue < 120) {
+            } else if (60 <= hue && hue < 120) {
                 (r = mid), (g = chroma), (b = 0);
-            }
-            else if (120 <= hue && hue < 180) {
+            } else if (120 <= hue && hue < 180) {
                 (r = 0), (g = chroma), (b = mid);
-            }
-            else if (180 <= hue && hue < 240) {
+            } else if (180 <= hue && hue < 240) {
                 (r = 0), (g = mid), (b = chroma);
-            }
-            else if (240 <= hue && hue < 300) {
+            } else if (240 <= hue && hue < 300) {
                 (r = mid), (g = 0), (b = chroma);
-            }
-            else if (300 <= hue && hue < 360) {
+            } else if (300 <= hue && hue < 360) {
                 (r = chroma), (g = 0), (b = mid);
             }
             r = Math.round((r + light) * 255);
@@ -201,12 +201,10 @@ class InputClass {
         if (this.id == "hsl-h" || this.id == "hsl-s" || this.id == "hsl-l") {
             hsv_s.value = hsvsl_arr[1].toString();
             hsv_v.value = hsvsl_arr[2].toString();
-        }
-        else if (this.id == "hsv-h" || this.id == "hsv-s" || this.id == "hsv-v") {
+        } else if (this.id == "hsv-h" || this.id == "hsv-s" || this.id == "hsv-v") {
             hsl_s.value = hsvsl_arr[3].toString();
             hsl_l.value = hsvsl_arr[4].toString();
-        }
-        else {
+        } else {
             hsl_s.value = hsvsl_arr[3].toString();
             hsl_l.value = hsvsl_arr[4].toString();
             hsv_s.value = hsvsl_arr[1].toString();
