@@ -3,4 +3,4 @@
 docs/** linguist-detectable=true
 docs/** linguist-vendored=false
 docs/** linguist-documentation=false
-tempatle.html -linguist-detectable=false
+template.html linguist-detectable=false
