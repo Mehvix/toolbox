@@ -24,11 +24,12 @@
 }
 
 /* Hide scroller -- Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
   /* Hide scroller -- Chrome */
 }
-input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -36,5 +37,4 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
 td:nth-of-type(2) {
   padding-right: 10px;
 }
-
 /*# sourceMappingURL=color-picker.css.map */

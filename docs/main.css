@@ -11,14 +11,13 @@ pre > code {
   height: 1.8em;
   padding: 0.5ch 0.5ch 0.5ch 0.75ch;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   border: none;
   vertical-align: middle;
   font-family: "PT Mono";
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
-
 /*# sourceMappingURL=main.css.map */
