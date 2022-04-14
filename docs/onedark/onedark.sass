@@ -42,6 +42,10 @@ $syntax-accent: hsl($syntax-hue, 100%, 66% )
     --hue-5-2: #{$hue-5-2} // <-red 2
     --hue-6: #{$hue-6} // <-orange 1
     --hue-6-2: #{$hue-6-2} // <-orange 2
+    --syntax-bg: #{$syntax-bg}
+    --syntax-gutter: #{$syntax-gutter}
+    --syntax-guide: #{$syntax-guide}
+    --syntax-accent: #{$syntax-accent}
 
 a
     color: #{$hue-2} !important
@@ -53,10 +57,6 @@ a
         filter: none
         &:hover
             color: $hue-4 !important
-
-div.box
-    box-shadow: none
-    border: none
 
 td
     padding-right: 1.5ch
@@ -70,3 +70,15 @@ th
     // color: #{$mono-3}
     color: unset
     background: #{$mono-3}
+
+div.box
+    box-shadow: none
+    border: none
+    width: fit-content
+    max-width: unset
+    display: block
+    margin-left: auto
+    margin-right: auto
+
+body
+    max-width: unset

@@ -243,20 +243,67 @@ class InputClass {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Init inputs
-    new InputClass("picker");
-    new InputClass("hex");
-    new InputClass("rgb-r");
-    new InputClass("rgb-b");
-    new InputClass("rgb-g");
-    new InputClass("hsv-h");
-    new InputClass("hsv-s");
-    new InputClass("hsv-v");
-    new InputClass("hsl-h");
-    new InputClass("hsl-s");
-    new InputClass("hsl-l");
+    const picker = new InputClass("picker");
+    const hex = new InputClass("hex");
+    const rgb_r = new InputClass("rgb-r");
+    const rgb_b = new InputClass("rgb-b");
+    const rgb_g = new InputClass("rgb-g");
+    const hsv_h = new InputClass("hsv-h");
+    const hsv_s = new InputClass("hsv-s");
+    const hsv_v = new InputClass("hsv-v");
+    const hsl_h = new InputClass("hsl-h");
+    const hsl_s = new InputClass("hsl-s");
+    const hsl_l = new InputClass("hsl-l");
+
+    new CopyButton("copy-hex");
+    new CopyButton("copy-rgb");
+    new CopyButton("copy-hsv");
+    new CopyButton("copy-hsl");
 
     // setInterval(function () {
     //     if (this.focused) update()
     //     if (this.focused) update()
     // }, 50)
 });
+
+class CopyButton {
+    button: HTMLButtonElement;
+
+    constructor(public id: string) {
+        this.button = <HTMLButtonElement>document.getElementById(id);
+
+        this.button.addEventListener("click", function () {
+            let value = "";
+            switch (id) {
+                case "copy-hex":
+                    value = (<HTMLInputElement>document.getElementById("hex")!).value!;
+                    break;
+                case "copy-rgb":
+                    value =
+                        (<HTMLInputElement>document.getElementById("rgb-r")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("rgb-g")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("rgb-b")!).value!;
+                    break;
+                case "copy-hsv":
+                    value =
+                        (<HTMLInputElement>document.getElementById("hsv-h")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("hsv-s")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("hsv-v")!).value!;
+                    break;
+                case "copy-hsl":
+                    value =
+                        (<HTMLInputElement>document.getElementById("hsl-h")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("hsl-s")!).value! +
+                        ", " +
+                        (<HTMLInputElement>document.getElementById("hsl-l")!).value!;
+                    break;
+            }
+            navigator.clipboard.writeText(value);
+        });
+    }
+}

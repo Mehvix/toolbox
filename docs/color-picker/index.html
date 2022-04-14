@@ -4,7 +4,7 @@
         <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
         <link
             rel="icon"
-            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>"
         />
 
         <link type="text/css" rel="stylesheet" href="../main.css" />
@@ -33,14 +33,13 @@
 
                 <table>
                     <tr>
-                        <td>
-                            Hex:
-                            <input id="hex" />
-                        </td>
+                        <td>Hex:</td>
+                        <td><input id="hex" /></td>
+                        <td><button id="copy-hex">Copy</button></td>
                     </tr>
                     <tr>
+                        <td>RGB:</td>
                         <td>
-                            RGB:
                             <input id="rgb-r" type="number" min="0" max="255" /><input id="rgb-g" type="number" min="0" max="255" /><input
                                 id="rgb-b"
                                 type="number"
@@ -48,10 +47,11 @@
                                 max="255"
                             />
                         </td>
+                        <td><button id="copy-rgb">Copy</button></td>
                     </tr>
                     <tr>
+                        <td>HSV:</td>
                         <td>
-                            HSV:
                             <input id="hsv-h" type="number" min="0" max="359" /><input id="hsv-s" type="number" min="0" max="100" /><input
                                 id="hsv-v"
                                 type="number"
@@ -59,10 +59,11 @@
                                 max="255"
                             />
                         </td>
+                        <td><button id="copy-hsv">Copy</button></td>
                     </tr>
                     <tr>
+                        <td>HSL:</td>
                         <td>
-                            HSL:
                             <input id="hsl-h" type="number" min="0" max="359" /><input id="hsl-s" type="number" min="0" max="100" /><input
                                 id="hsl-l"
                                 type="number"
@@ -70,6 +71,7 @@
                                 max="100"
                             />
                         </td>
+                        <td><button id="copy-hsl">Copy</button></td>
                     </tr>
                     <!--<tr>
                         <td>

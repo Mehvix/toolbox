@@ -14,6 +14,10 @@
   --hue-5-2: #be5046;
   --hue-6: #d19a66;
   --hue-6-2: #e5c07b;
+  --syntax-bg: #282c34;
+  --syntax-gutter: #636d83;
+  --syntax-guide: #abb2bf;
+  --syntax-accent: #528bff;
 }
 
 a {
@@ -34,12 +38,6 @@ a.inverse-bg:hover {
   color: #98c379 !important;
 }
 
-div.box {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: none;
-}
-
 td {
   padding-right: 1.5ch;
 }
@@ -58,5 +56,22 @@ th {
 ::selection {
   color: unset;
   background: #5c6370;
+}
+
+div.box {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: unset;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  max-width: unset;
 }
 /*# sourceMappingURL=onedark.css.map */
