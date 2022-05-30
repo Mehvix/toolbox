@@ -1,4 +1,4 @@
 {
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "python.pythonPath": "C:\\Users\\maxdesktop\\AppData\\Local\\Programs\\Python\\Python39"
+    "liveServer.settings.port": 5500
 }
