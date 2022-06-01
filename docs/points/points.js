@@ -59,7 +59,7 @@ document.onkeydown = (e) => {
                 }
             }
         }
-        else if (k != "s") {
+        else {
             nodes.forEach((el) => {
                 drawCircle(el[0], el[1], "gray");
             });

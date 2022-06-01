@@ -10,6 +10,7 @@ function grid(i: number): number {
     return RES * Math.round(i / RES);
 }
 
+
 surface.onclick = function (e) {
     nodes[++i] = [grid(e.x), grid(e.y)];
 
