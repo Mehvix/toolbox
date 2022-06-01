@@ -66,7 +66,7 @@ function upd() {
                 line = line.trim()
             }
             if (['json', 'java', 'javasb', 'sharp'].includes(getSelected())) {
-                line = line.replace(`"`, `\\"`)
+                line = line.replaceAll(`"`, `\\"`)
             }
 
             if (to_break && line.length > break_n) {

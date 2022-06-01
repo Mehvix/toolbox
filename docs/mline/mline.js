@@ -49,7 +49,7 @@ function upd() {
                 line = line.trim();
             }
             if (['json', 'java', 'javasb', 'sharp'].includes(getSelected())) {
-                line = line.replace(`"`, `\\"`);
+                line = line.replaceAll(`"`, `\\"`);
             }
             if (to_break && line.length > break_n) {
                 let break_at = line.charAt(break_n - 1) == '\\' ? Math.max(break_n - 1, 2) : break_n;
