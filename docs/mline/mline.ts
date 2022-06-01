@@ -65,8 +65,23 @@ function upd() {
             if (toClean()) {
                 line = line.trim()
             }
-            if (['json', 'java', 'javasb', 'sharp'].includes(getSelected())) {
-                line = line.replaceAll(`"`, `\\"`)
+            switch (getSelected()) {
+                case 'json':
+                case 'java':
+                case 'javasb':
+                case 'sharp':
+                    line = line.replaceAll(`"`, `\\"`)
+                    break;
+                case 'py':
+                case 'go':
+                    line = line.replaceAll('`', '\\`')
+                    break;
+                case 'js':
+                    line = line.replaceAll("'", "\\'")
+                case 'py2':
+                case 'nada':
+                default:
+                    break;
             }
 
             if (to_break && line.length > break_n) {
