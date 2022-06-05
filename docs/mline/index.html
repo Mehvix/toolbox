@@ -98,7 +98,9 @@
             </form>
             <span id="cow">
                 <textarea name="inp" id="inp" rows="10" style="width: 99%" oninput="upd()"></textarea>
-                <textarea name="outp" id="outp" rows="10" style="width: 99%" disabled class="select-all"></textarea>
+                <textarea name="outp" id="outp" rows="10" style="width: 99%" readonly
+                    onfocus="this.select()"></textarea>
+                </script>
             </span>
         </article>
 
