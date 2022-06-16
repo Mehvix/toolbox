@@ -1,196 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
-        <link
-            rel="icon"
-            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
-        />
 
-        <link type="text/css" rel="stylesheet" href="resistor.css" />
-        <link type="text/css" rel="stylesheet" href="../main.css" />
+<head>
+    <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
 
-        <script src="resistor.js"></script>
-        <script src="https://www.mehvix.com/static/js/include.js"></script>
-        <meta charset="utf-8" />
-        <title>Mehvix | Resistor Calculator</title>
-        <style>
-            :root {
-                --outside-bg-color: rgb(15, 98, 66);
-            }
-        </style>
-    </head>
+    <link type="text/css" rel="stylesheet" href="resistor.css" />
+    <link type="text/css" rel="stylesheet" href="../main.css" />
 
-    <body>
-        <div class="box">
-            <div class="nav">
-                <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a>/<a href="" class="inverse-bg">Resistor Calculator</a>
-            </div>
+    <script defer src="resistor.js"></script>
+    <script src="https://www.mehvix.com/static/js/include.js"></script>
+    <meta charset="utf-8" />
+    <title>Mehvix | Resistor Calculator</title>
+    <style>
+        :root {
+            --outside-bg-color: rgb(15, 98, 66);
+        }
 
-            <article>
-                <h1 style="margin-top: 1em; margin-bottom: 0.25em">Calculator</h1>
-                <table>
-                    <tr class="bands">
-                        <td>Bands:</td>
-                        <td>
-                            <input type="number" name="bands" id="bands" min="4" max="6" placeholder="6" />
-                        </td>
-                    </tr>
-                    <tr class="band1">
-                        <td>Band #</td>
-                        <td>
-                            <select name="band1" id="band1">
-                                <option value="Black">Black</option>
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Green">Green</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Violet">Violet</option>
-                                <option value="Gray">Gray</option>
-                                <option value="White">White</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>First Digit</td> -->
-                    </tr>
-                    <tr>
-                        <td>Band #</td>
-                        <td>
-                            <select name="band2" id="band2">
-                                <option value="Black">Black</option>
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Green">Green</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Violet">Violet</option>
-                                <option value="Gray">Gray</option>
-                                <option value="White">White</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>Second Digit</td> -->
-                    </tr>
-                    <tr>
-                        <td>Band #</td>
-                        <td>
-                            <select name="band3" id="band3">
-                                <option value="Black">Black</option>
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Green">Green</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Violet">Violet</option>
-                                <option value="Gray">Gray</option>
-                                <option value="White">White</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>Third Digit</td> -->
-                    </tr>
-                    <tr>
-                        <td>Band #</td>
-                        <td>
-                            <select name="band4" id="band4">
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
-                                <option value="Black">Black</option>
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Green">Green</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Violet">Violet</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>Multiplier Digit</td> -->
-                    </tr>
-                    <tr>
-                        <td>Band #</td>
-                        <td>
-                            <select name="band5" id="band5">
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
+    </style>
+</head>
 
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-
-                                <option value="Green">Green</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Violet">Violet</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>Tolerance Digit</td> -->
-                    </tr>
-                    <tr>
-                        <td>Band #</td>
-                        <td>
-                            <select name="band6" id="band6">
-                                <option value="Brown">Brown</option>
-                                <option value="Red">Red</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Yellow">Yellow</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span class="bandbox"></span>
-                        </td>
-                        <!-- <td>Temperature Coefficient</td> -->
-                    </tr>
-                </table>
-                <p id="result" style="margin-top: 1em">
-                    Your <b><span id="band-count"></span>-band</b> resistor has a
-                    <!-- <b><span id="resistance-digits"></span>-digit</b> -->
-                    resistance of
-                    <b><span id="resistance"></span> Ohms</b> ∓
-                    <b><span id="tolerance"></span>% (<span id="tolerance-value"></span> Ohms)</b><span id="temp"></span>
-                </p>
-
-                <h1>How to Read</h1>
-                If your resistor has four bands, the first two are the digits, the third is the multiplier, and the fourth is the tolerance.
-                Otherwise, for five and six band resistors, the first three are the digits, the forth is the multiplier, and the fifth is
-                the tolerance. The sixth band is the
-                <a href="https://en.wikipedia.org/wiki/Temperature_coefficient">temperature coefficient</a>.
-            </article>
-
-            <div id="footer">
-                <table id="footerTable">
-                    <tr>
-                        <td>$BTC</td>
-                        <td>15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1</td>
-                    </tr>
-                    <tr>
-                        <td>$XMR</td>
-                        <td>45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ</td>
-                    </tr>
-                    <tr>
-                        <td>$ETH</td>
-                        <td>0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74</td>
-                    </tr>
-                    <tr>
-                        <td id="footerDateYear">2021</td>
-                        <td>Max Vogel</td>
-                    </tr>
-                </table>
-            </div>
+<body>
+    <div class="box">
+        <div class="nav">
+            <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a>/<a href="" class="inverse-bg">Resistor
+                Calculator</a>
         </div>
-    </body>
+
+        <article>
+            <h1 style="margin-top: 1em; margin-bottom: 0.25em">Calculator</h1>
+            <table>
+                <tr class="bands">
+                    <td>Bands:</td>
+                    <td>
+                        <input type="number" name="bands" id="bands" min="4" max="6" placeholder="6" />
+                    </td>
+                </tr>
+                <tr class="band1">
+                    <td>Band #</td>
+                    <td>
+                        <select name="band1" id="band1">
+                            <!-- <option value="Black">Black</option> -->
+                            <!-- technically you should NOT have a leading zero -- got this wrong on 16A F21 mock final -->
+                            <!-- this is a lazy fix but I can fall asleep at night -->
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Violet">Violet</option>
+                            <option value="Gray">Gray</option>
+                            <option value="White">White</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>First Digit</td> -->
+                </tr>
+                <tr>
+                    <td>Band #</td>
+                    <td>
+                        <select name="band2" id="band2">
+                            <option value="Black">Black</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Violet">Violet</option>
+                            <option value="Gray">Gray</option>
+                            <option value="White">White</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>Second Digit</td> -->
+                </tr>
+                <tr>
+                    <td>Band #</td>
+                    <td>
+                        <select name="band3" id="band3">
+                            <option value="Black">Black</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Violet">Violet</option>
+                            <option value="Gray">Gray</option>
+                            <option value="White">White</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>Third Digit</td> -->
+                </tr>
+                <tr>
+                    <td>Band #</td>
+                    <td>
+                        <select name="band4" id="band4">
+                            <option value="Silver">Silver</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Black">Black</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Violet">Violet</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>Multiplier Digit</td> -->
+                </tr>
+                <tr>
+                    <td>Band #</td>
+                    <td>
+                        <select name="band5" id="band5">
+                            <option value="Silver">Silver</option>
+                            <option value="Gold">Gold</option>
+
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Violet">Violet</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>Tolerance Digit</td> -->
+                </tr>
+                <tr>
+                    <td>Band #</td>
+                    <td>
+                        <select name="band6" id="band6">
+                            <option value="Brown">Brown</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="bandbox"></span>
+                    </td>
+                    <!-- <td>Temperature Coefficient</td> -->
+                </tr>
+            </table>
+            <p id="result" style="margin-top: 1em">
+                Your <b><span id="band-count"></span>-band</b> resistor has a
+                <!-- <b><span id="resistance-digits"></span>-digit</b> -->
+                resistance of
+                <b><span id="resistance"></span> Ohms</b> ∓
+                <b><span id="tolerance"></span>% (<span id="tolerance-value"></span> Ohms)</b><span id="temp"></span>
+            </p>
+
+            <h1>How to Read</h1>
+            If your resistor has four bands, the first two are the digits, the third is the multiplier, and the fourth
+            is the tolerance.
+            Otherwise, for five and six band resistors, the first three are the digits, the forth is the multiplier, and
+            the fifth is
+            the tolerance. The sixth band is the
+            <a href="https://en.wikipedia.org/wiki/Temperature_coefficient">temperature coefficient</a>.
+        </article>
+
+        <div id="footer">
+            <table id="footerTable">
+                <tr>
+                    <td>$BTC</td>
+                    <td>15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1</td>
+                </tr>
+                <tr>
+                    <td>$XMR</td>
+                    <td>45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ
+                    </td>
+                </tr>
+                <tr>
+                    <td>$ETH</td>
+                    <td>0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74</td>
+                </tr>
+                <tr>
+                    <td id="footerDateYear">2021</td>
+                    <td>Max Vogel</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
 </html>

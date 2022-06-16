@@ -1,4 +1,5 @@
 {
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "liveServer.settings.port": 5500
+    "liveServer.settings.port": 7001,
+    "liveServer.settings.root": "/docs/"
 }

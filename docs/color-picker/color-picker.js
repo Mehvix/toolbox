@@ -218,28 +218,6 @@ class InputClass {
         document.documentElement.style.setProperty("--outside-bg-color", hex.value);
     }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    // Init inputs
-    const picker = new InputClass("picker");
-    const hex = new InputClass("hex");
-    const rgb_r = new InputClass("rgb-r");
-    const rgb_b = new InputClass("rgb-b");
-    const rgb_g = new InputClass("rgb-g");
-    const hsv_h = new InputClass("hsv-h");
-    const hsv_s = new InputClass("hsv-s");
-    const hsv_v = new InputClass("hsv-v");
-    const hsl_h = new InputClass("hsl-h");
-    const hsl_s = new InputClass("hsl-s");
-    const hsl_l = new InputClass("hsl-l");
-    new CopyButton("copy-hex");
-    new CopyButton("copy-rgb");
-    new CopyButton("copy-hsv");
-    new CopyButton("copy-hsl");
-    // setInterval(function () {
-    //     if (this.focused) update()
-    //     if (this.focused) update()
-    // }, 50)
-});
 class CopyButton {
     id;
     button;
@@ -281,4 +259,24 @@ class CopyButton {
         });
     }
 }
+// Init inputs
+const picker = new InputClass("picker");
+const hex = new InputClass("hex");
+const rgb_r = new InputClass("rgb-r");
+const rgb_b = new InputClass("rgb-b");
+const rgb_g = new InputClass("rgb-g");
+const hsv_h = new InputClass("hsv-h");
+const hsv_s = new InputClass("hsv-s");
+const hsv_v = new InputClass("hsv-v");
+const hsl_h = new InputClass("hsl-h");
+const hsl_s = new InputClass("hsl-s");
+const hsl_l = new InputClass("hsl-l");
+new CopyButton("copy-hex");
+new CopyButton("copy-rgb");
+new CopyButton("copy-hsv");
+new CopyButton("copy-hsl");
+// setInterval(function () {
+//     if (this.focused) update()
+//     if (this.focused) update()
+// }, 50)
 //# sourceMappingURL=color-picker.js.map

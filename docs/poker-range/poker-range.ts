@@ -12,79 +12,6 @@ function float2frac(d: number, f: number): number {
     return 100;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    // todo agh this doesn't work with other variants. simulate hands to get EV rank?
-    function updateSelects(): void {
-        let max = Math.round((parseFloat(slider.value) * permus) / 100);
-        let hands: string = "";
-
-        for (let i = 0; i < max; i++) {
-            let id = EV[i];
-            let el = document.getElementById(id) as HTMLTableCellElement;
-            el.classList.add("selected");
-            hands += EV[i] + ", ";
-        }
-
-        document.getElementById("hands")!.innerText = hands.slice(0, -2) + " ";
-
-        for (let i = max; i < permus; i++) {
-            let id = EV[i];
-            let el = document.getElementById(id) as HTMLTableCellElement;
-            el.classList.remove("selected");
-        }
-    }
-
-    // Sets slider and number input to same value
-    function updateNum(caller: string): void {
-        // slider holds true value (no rounding)
-        switch (caller) {
-            case "num":
-                slider.value = float2frac(permus, parseFloat(num.value)).toString();
-                break;
-            case "slider":
-                num.value = parseFloat(slider.value).toFixed(2);
-                break;
-        }
-
-        updateSelects();
-    }
-
-    // Updates page based on variant selected
-    function variantUpdate(): void {
-        switch (variant.value) {
-            case "texas":
-                permus = 13 * 13;
-                variantCSS.innerHTML = "";
-                break;
-            case "short":
-                permus = 9 * 9;
-                variantCSS.innerHTML = ".small{ display: none }";
-                break;
-        }
-        slider.step = (100 / permus).toString();
-        updateNum("slider");
-    }
-
-    // Table init
-    const table = document.getElementById("range_table")!;
-    table.innerHTML += data;
-
-    // Slider + number sync
-    const slider = document.getElementById("slider") as HTMLInputElement;
-    const num = document.getElementById("num") as HTMLInputElement;
-    slider.addEventListener("change", () => updateNum("slider"));
-    num.addEventListener("change", () => updateNum("num"));
-    num.addEventListener("blur", () => updateNum("slider"));
-    updateNum("slider");
-
-    // Variant adjusting code
-    const variant = <HTMLSelectElement>document.getElementById("variant");
-    const variantCSS = <HTMLStyleElement>document.getElementById("variantCSS");
-    variant.addEventListener("change", () => variantUpdate());
-    variantUpdate();
-    updateNum("slider");
-});
-
 // variables
 var permus: number;
 
@@ -459,3 +386,75 @@ const data = `<table id="table" class="range_table">
     </tr>
 </tbody>
 </table>`;
+
+
+// todo agh this doesn't work with other variants. simulate hands to get EV rank?
+function updateSelects(): void {
+    let max = Math.round((parseFloat(slider.value) * permus) / 100);
+    let hands: string = "";
+
+    for (let i = 0; i < max; i++) {
+        let id = EV[i];
+        let el = document.getElementById(id) as HTMLTableCellElement;
+        el.classList.add("selected");
+        hands += EV[i] + ", ";
+    }
+
+    document.getElementById("hands")!.innerText = hands.slice(0, -2) + " ";
+
+    for (let i = max; i < permus; i++) {
+        let id = EV[i];
+        let el = document.getElementById(id) as HTMLTableCellElement;
+        el.classList.remove("selected");
+    }
+}
+
+// Sets slider and number input to same value
+function updateNum(caller: string): void {
+    // slider holds true value (no rounding)
+    switch (caller) {
+        case "num":
+            slider.value = float2frac(permus, parseFloat(num.value)).toString();
+            break;
+        case "slider":
+            num.value = parseFloat(slider.value).toFixed(2);
+            break;
+    }
+
+    updateSelects();
+}
+
+// Updates page based on variant selected
+function variantUpdate(): void {
+    switch (variant.value) {
+        case "texas":
+            permus = 13 * 13;
+            variantCSS.innerHTML = "";
+            break;
+        case "short":
+            permus = 9 * 9;
+            variantCSS.innerHTML = ".small{ display: none }";
+            break;
+    }
+    slider.step = (100 / permus).toString();
+    updateNum("slider");
+}
+
+// Table init
+const table = document.getElementById("range_table")!;
+table.innerHTML += data;
+
+// Slider + number sync
+const slider = document.getElementById("slider") as HTMLInputElement;
+const num = document.getElementById("num") as HTMLInputElement;
+slider.addEventListener("change", () => updateNum("slider"));
+num.addEventListener("change", () => updateNum("num"));
+num.addEventListener("blur", () => updateNum("slider"));
+updateNum("slider");
+
+// Variant adjusting code
+const variant = <HTMLSelectElement>document.getElementById("variant");
+const variantCSS = <HTMLStyleElement>document.getElementById("variantCSS");
+variant.addEventListener("change", () => variantUpdate());
+variantUpdate();
+updateNum("slider");
