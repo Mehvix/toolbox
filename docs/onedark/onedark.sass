@@ -1,84 +1,23 @@
-// Config -----------------------------------
-$syntax-hue: 220
-$syntax-saturation: 13%
-$syntax-brightness: 18%
+$mono-1: #abb2bf
+$mono-2: #828997
+$mono-3: #5c6370
 
-// Monochrome -----------------------------------
-$mono-1: hsl($syntax-hue, 14%, 71%) // default text
-$mono-2: hsl($syntax-hue, 9%, 55%)
-$mono-3: hsl($syntax-hue, 10%, 40%)
+$hue-1: #56b6c2
+$hue-2: #61afef
+$hue-3: #c678dd
+$hue-4: #98c379
+$hue-5: #e06c75
+$hue-5-2: #be5046
+$hue-6: #d19a66
+$hue-6-2: #e5c07b
 
-// Colors -----------------------------------
-$hue-1: hsl(187, 47%, 55%) // <-cyan
-$hue-2: hsl(207, 82%, 66%) // <-blue
-$hue-3: hsl(286, 60%, 67%) // <-purple
-$hue-4: hsl( 95, 38%, 62%) // <-green
-$hue-5: hsl(355, 65%, 65%) // <-red 1
-$hue-5-2: hsl( 5, 48%, 51%) // <-red 2
-$hue-6: hsl( 29, 54%, 61%) // <-orange 1
-$hue-6-2: hsl( 39, 67%, 69%) // <-orange 2
+$bg: #282c34
+$gutter: #636d83
+$guide: #abb2bf
+$accent: #528bff
 
-// Base colors -----------------------------------
-$syntax-fg: $mono-1
-$syntax-bg: hsl($syntax-hue, $syntax-saturation, $syntax-brightness)
-$syntax-gutter: darken($syntax-fg, 26%)
-$syntax-guide: rgba($syntax-fg, 15%)
-$syntax-accent: hsl($syntax-hue, 100%, 66% )
-
-\:root
-    --inside-bg-color: #{$syntax-bg}
-    --outside-bg-color: #{$syntax-bg}
-    --code-bg-color: #282c34
-    // --text-color-inverse:
-    --text-color: #{$mono-1}
-    --mono-1: #{$mono-1} // default text
-    --mono-2: #{$mono-2}
-    --mono-3: #{$mono-3}
-    --hue-1: #{$hue-1} // <-cyan
-    --hue-2: #{$hue-2} // <-blue
-    --hue-3: #{$hue-3} // <-purple
-    --hue-4: #{$hue-4} // <-green
-    --hue-5: #{$hue-5} // <-red 1
-    --hue-5-2: #{$hue-5-2} // <-red 2
-    --hue-6: #{$hue-6} // <-orange 1
-    --hue-6-2: #{$hue-6-2} // <-orange 2
-    --syntax-bg: #{$syntax-bg}
-    --syntax-gutter: #{$syntax-gutter}
-    --syntax-guide: #{$syntax-guide}
-    --syntax-accent: #{$syntax-accent}
-
-a
-    color: #{$hue-2} !important
-    &:hover
-        color: $hue-6 !important
-
-    &.inverse-bg
-        color: #{$hue-1} !important
-        filter: none
-        &:hover
-            color: $hue-4 !important
-
-td
-    padding-right: 1.5ch
-
-th
-    font-weight: 800
-    font-style: italic
-    font-size: 110%
-
-::selection
-    // color: #{$mono-3}
-    color: unset
-    background: #{$mono-3}
-
-div.box
-    box-shadow: none
-    border: none
-    width: fit-content
-    max-width: unset
-    display: block
-    margin-left: auto
-    margin-right: auto
-
-body
-    max-width: unset
+// extra
+// $fg: #4b5263
+// $bg-light: #282c34
+// $bg-dark: #21252b
+// $bg-darker: #1d1f23
