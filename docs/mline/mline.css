@@ -25,15 +25,15 @@ form > :nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -43,6 +43,16 @@ form > :nth-child(2) > span {
   margin: 0 1ch;
   width: 14ch;
   text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form > :nth-child(2) > span > label {
+  padding-left: 1ch;
 }
 
 form > :nth-child(1) {

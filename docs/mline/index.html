@@ -41,6 +41,10 @@
                             <input type="radio" name="typ" id="tabs">
                             <label for="tabs">Tabs</label>
                         </span>
+                        <span>
+                            <input type="checkbox" name="firstl" id="firstl">
+                            <label for="firstl">Indent First Line</label>
+                        </span>
                     </fieldset>
                     <fieldset>
                         <legend>Format</legend>
@@ -63,16 +67,24 @@
                         <label for="json">json</label>
                     </span>
                     <span>
+                        <input name="format" type="radio" id="yaml" onclick="parse = yamlify" />
+                        <label for="yaml">yaml</label>
+                    </span>
+                    <span>
                         <input name="format" type="radio" id="py" onclick="parse = pythonify" />
                         <label for="py">Python `</label>
                     </span>
                     <span>
-                        <input name="format" type="radio" id="py2" onclick="parse = pythonify2" />
-                        <label for="py2">Python '''</label>
-                    </span>
-                    <span>
                         <input name="format" type="radio" id="java" onclick="parse = javaify" />
                         <label for="java">Java</label>
+                    </span>
+                    <span>
+                        <input name="format" type="radio" id="javasb" onclick="parse = sbify" />
+                        <label for="javasb">Java SB</label>
+                    </span>
+                    <span>
+                        <input name="format" type="radio" id="py2" onclick="parse = pythonify2" />
+                        <label for="py2">Python ``` + toml</label>
                     </span>
                     <span>
                         <input name="format" type="radio" id="js" onclick="parse = jsify" />
@@ -83,8 +95,8 @@
                         <label for="go">Go + JS</label>
                     </span>
                     <span>
-                        <input name="format" type="radio" id="javasb" onclick="parse = sbify" />
-                        <label for="javasb">Java SB</label>
+                        <input name="format" type="radio" id="haskell" onclick="parse = haskellify" />
+                        <label for="haskell">Haskell</label>
                     </span>
                     <span>
                         <input name="format" type="radio" id="sharp" onclick="parse = seesharp" />

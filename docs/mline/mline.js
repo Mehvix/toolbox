@@ -6,9 +6,11 @@ INPUT.addEventListener('change', upd);
 const TABN = document.getElementById('tabn');
 const SPAC = document.getElementById('spaces');
 const TABS = document.getElementById('tabs');
+const INITL = document.getElementById('firstl');
 TABN.addEventListener('input', upd);
 SPAC.addEventListener('change', upd);
 TABS.addEventListener('change', upd);
+INITL.addEventListener('change', upd);
 function spaceChar() {
     return SPAC.checked ? " " : "\t";
 }
@@ -83,8 +85,11 @@ function parse(arr) {
     return jsonify(arr);
 }
 function masterParse(begin, endl, newl, arr, close) {
-    if (!(close)) {
+    if (!close && !(close === "")) {
         close = begin;
+    }
+    if (INITL.checked) {
+        begin = genSpace() + begin;
     }
     let between = endl.trim() + "\n" + genSpace() + newl;
     return begin + arr.join(between) + close;
@@ -99,13 +104,13 @@ function pythonify(arr) {
     return masterParse('`', `\` \\`, '`', arr);
 }
 function pythonify2(arr) {
-    return masterParse('\'\'\'\\\n' + genSpace(), '', '', arr, '\n' + genSpace() + '\'\'\'');
+    return masterParse("'''\n" + genSpace(), '', '', arr, "\n" + genSpace() + "'''");
 }
 function javaify(arr) {
     return masterParse('"', '\\n"\n', '+ "', arr, '";');
 }
 function sbify(arr) {
-    return masterParse('new StringBuilder()\n    .append("', '\\n")\n', '    .append("', arr, '\\n").toString();');
+    return masterParse('new StringBuilder()\n' + genSpace() + '.append("', '\\n")\n', '.append("', arr, '\\n").toString();');
 }
 function goify(arr) {
     return masterParse('`', ``, '', arr);
@@ -115,5 +120,11 @@ function jsify(arr) {
 }
 function seesharp(arr) {
     return masterParse('@"', '', '', arr, '";');
+}
+function yamlify(arr) {
+    return masterParse('>\n' + genSpace(), '', '', arr, '');
+}
+function haskellify(arr) {
+    return masterParse('"', ' \\', '\\', arr, '"');
 }
 //# sourceMappingURL=mline.js.map

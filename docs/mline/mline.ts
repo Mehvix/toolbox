@@ -7,10 +7,12 @@ INPUT.addEventListener('change', upd)
 const TABN = <HTMLInputElement>document.getElementById('tabn')
 const SPAC = <HTMLInputElement>document.getElementById('spaces')
 const TABS = <HTMLInputElement>document.getElementById('tabs')
+const INITL = <HTMLInputElement>document.getElementById('firstl')
 
 TABN.addEventListener('input', upd)
 SPAC.addEventListener('change', upd)
 TABS.addEventListener('change', upd)
+INITL.addEventListener('change', upd)
 
 
 function spaceChar(): string {
@@ -109,8 +111,11 @@ function parse(arr: string[]): string {
 function masterParse(begin: string, endl: string, newl: string, arr: string[]): string;
 function masterParse(begin: string, endl: string, newl: string, arr: string[], close: string,): string;
 function masterParse(begin: string, endl: string, newl: string, arr: string[], close?: string): string {
-    if (!(close)) {
+    if (!close && !(close === "")) {
         close = begin
+    }
+    if (INITL.checked) {
+        begin = genSpace() + begin
     }
     let between = endl.trim() + "\n" + genSpace() + newl;
     return begin + arr.join(between) + close
@@ -129,7 +134,7 @@ function pythonify(arr: string[]) {
 }
 
 function pythonify2(arr: string[]) {
-    return masterParse('\'\'\'\\\n' + genSpace(), '', '', arr, '\n' + genSpace() + '\'\'\'')
+    return masterParse("'''\n" + genSpace(), '', '', arr, "\n" + genSpace() + "'''")
 }
 
 function javaify(arr: string[]) {
@@ -138,7 +143,7 @@ function javaify(arr: string[]) {
 
 
 function sbify(arr: string[]) {
-    return masterParse('new StringBuilder()\n    .append("', '\\n")\n', '    .append("', arr, '\\n").toString();')
+    return masterParse('new StringBuilder()\n' + genSpace() + '.append("', '\\n")\n', '.append("', arr, '\\n").toString();')
 }
 
 
@@ -154,4 +159,14 @@ function jsify(arr: string[]) {
 
 function seesharp(arr: string[]) {
     return masterParse('@"', '', '', arr, '";')
+}
+
+
+function yamlify(arr: string[]) {
+    return masterParse('>\n' + genSpace(), '', '', arr, '')
+}
+
+
+function haskellify(arr: string[]) {
+    return masterParse('"', ' \\', '\\', arr, '"')
 }

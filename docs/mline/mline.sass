@@ -15,15 +15,20 @@ form
 
     & > :nth-child(2)
         display: flex
-        align-items: flex-start
         flex-direction: row
         flex-wrap: wrap
+        align-items: normal
         justify-content: space-between
 
         & > span
             margin: 0 1ch
             width: 14ch
             text-align: left
+            display: flex
+            align-items: center
+
+            & > label
+                padding-left: 1ch
 
     & > :nth-child(1)
         display: flex
