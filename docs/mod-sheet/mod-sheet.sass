@@ -1,0 +1,78 @@
+// \:root
+//     --fade-in: 35ms
+//     --fade-out: 85ms
+//     --product: 32
+
+article
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+
+#controls
+    display: flex
+    justify-content: space-between
+    width: 100%
+
+    & > span
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+
+        &:nth-of-type(1)
+            input
+                width: 5ch
+        &:nth-of-type(2)
+            input
+                width: 8ch
+
+        input:disabled
+            cursor: not-allowed
+
+#sheet
+    margin: 1ch
+    & > div
+        display: flex
+
+        & > span
+            display: flex
+            align-items: center
+            text-align: center
+            width: 4ch
+            min-width: 4ch
+            max-width: 4ch
+            height: 4ch
+            justify-content: center
+
+        &:not(:first-child)
+            counter-increment: row
+
+            & span
+                &:not(:first-child)
+                    background: pink
+                    counter-increment: col
+                    // transition-timing-function: ease-in
+                    transition: all calc(var(--fade-out) * var(--product))
+                    filter: hue-rotate(0)
+                    &.fade
+                        background: green
+                        transition: all calc(var(--fade-in) * var(--product))
+                        filter: hue-rotate(180deg)
+
+                &:first-child
+                    background: black
+                    color: white
+                    &::before
+                        content: counter(row)
+
+                &:hover::before
+                    content: counter(row) "," counter(col)
+                    z-index: 1
+
+        &:first-child span
+            &:not(:first-child)
+                background: black
+                color: white
+                counter-increment: col
+            &::before
+                content: counter(col)

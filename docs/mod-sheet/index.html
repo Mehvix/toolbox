@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>" />
+    <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
+    <script src="https://www.mehvix.com/static/js/include.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="../main.css" />
+    <link type="text/css" rel="stylesheet" href="mod-sheet.css" />
+    <script defer src="mod-sheet.js"></script>
+    <meta charset="utf-8" />
+    <title>Mehvix | Modulo Sheet</title>
+    <style>
+        :root {
+            --outside-bg-color: rgb(0, 134, 101);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="nav">
+            <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a>/<a href="" class="inverse-bg">Modulo
+                Sheet</a>
+        </div>
+
+        <article>
+            <form>
+                <fieldset id="controls">
+                    <legend>Controls</legend>
+                    <span>
+                        <span>
+                            <label for="rows">Rows:</label>
+                            <input type="number" name="rows" id="rows" value=4 min=1>
+                        </span>
+                        <span>
+                            <label for="cols">Cols:</label>
+                            <input type="number" name="cols" id="cols" value=8 min=1>
+                        </span>
+                        <span>
+                            <label for="gcd">GCD:</label>
+                            <input disabled type="number" name="gcd" id="gcd">
+                        </span>
+                    </span>
+                    <span>
+                        <span>
+                            <label for="speed">Clock:</label>
+                            <input type="number" name="speed" id="speed" min=1 value=100 step=10>
+                        </span>
+                        <span>
+                            <label for="fadein">Fade-in:</label>
+                            <input type="number" name="fadein" id="fadein" min=1 value=15
+                                oninput="document.documentElement.style.setProperty('--fade-in', parseInt(this.value/10) + 'ms');">
+                        </span>
+                        <span>
+                            <label for="fadeout">Fade-out:</label>
+                            <input type="number" name="fadeout" id="fadeout" min=10 disabled>
+                            <!-- oninput="document.documentElement.style.setProperty('--fade-out', parseInt(this.value) + 'ms');"> -->
+                        </span>
+                    </span>
+                </fieldset>
+            </form>
+            <div id="sheet">
+            </div>
+        </article>
+
+        <div id="footer">
+            <table id="footerTable">
+                <tr>
+                    <td>$BTC</td>
+                    <td>15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1</td>
+                </tr>
+                <tr>
+                    <td>$XMR</td>
+                    <td>45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ
+                    </td>
+                </tr>
+                <tr>
+                    <td>$ETH</td>
+                    <td>0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74</td>
+                </tr>
+                <tr>
+                    <td id="footerDateYear">2021</td>
+                    <td>Max Vogel</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
