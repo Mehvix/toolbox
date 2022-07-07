@@ -76,13 +76,16 @@ article {
           justify-content: center;
 }
 
-#sheet > div:not(:first-child) {
+#sheet > div:not(:nth-of-type(1)):not(:nth-of-type(2)) {
   counter-increment: row;
+}
+
+#sheet > div:not(:first-child) span:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+  counter-increment: col;
 }
 
 #sheet > div:not(:first-child) span:not(:first-child) {
   background: pink;
-  counter-increment: col;
   -webkit-transition: all calc(var(--fade-out) * var(--product));
   transition: all calc(var(--fade-out) * var(--product));
   -webkit-filter: hue-rotate(0);
@@ -114,6 +117,9 @@ article {
 #sheet > div:first-child span:not(:first-child) {
   background: black;
   color: white;
+}
+
+#sheet > div:first-child span:not(:nth-of-type(1)):not(:nth-of-type(2)) {
   counter-increment: col;
 }
 
