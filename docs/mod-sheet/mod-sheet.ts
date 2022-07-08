@@ -9,18 +9,14 @@ const FADEIN = <HTMLInputElement>document.getElementById('fadein')!
 const FADEOUT = <HTMLInputElement>document.getElementById('fadeout')!
 var tick = -1
 
+FADEOUT.addEventListener("input", calcFadeOut)
+SPEED.addEventListener("input", calcFadeOut)
+FADEIN.dispatchEvent(new Event('input'))
+FADEOUT.dispatchEvent(new Event('input'))
+
 ROWS.addEventListener('input', this.upd)
 COLS.addEventListener('input', this.upd)
 this.upd()
-
-FADEOUT.addEventListener("input", (e) => {
-    let val = parseInt(SPEED.value) * product() / gcd() / 25
-    e.target.value = val
-    ROOT.style.setProperty('--fade-out', val + 'ms');
-})
-
-FADEIN.dispatchEvent(new Event('input'))
-FADEOUT.dispatchEvent(new Event('input'))
 
 function euclids(x: number, y: number): number {
     if (y === 0) {
@@ -85,14 +81,14 @@ function upd() {
         updCols(dc)
     }
 
-    [...SHEET.children].map(row => {
-        [...row.children].map(cell => {
-            cell.innerHTML = ""
+    Array.from(SHEET.children).forEach(row => {
+        Array.from(row.children).forEach(cell => {
+            cell.setAttribute("tick", "")
             cell.classList.remove("fade")
         })
     })
 
-    GCD.value = "" + gcd()
+    GCD.value = String(gcd())
 
     let tock = tick
     tick = 0
@@ -100,7 +96,7 @@ function upd() {
     getCellMod(tock - 1, tock - 1).classList.remove("fade")
     getCellMod(tock, tock).classList.remove("fade")
 
-    ROOT.style.setProperty('--product', Math.max(numCols(), numRows()) ** 2);
+    ROOT.style.setProperty('--product', String(Math.max(numCols(), numRows()) ** 2));
     // ROOT.style.setProperty('--fade-out', 0)
     // todo add class that has instant transition time and default bg/hue
     FADEOUT.dispatchEvent(new Event('input'))
@@ -120,8 +116,9 @@ function updRows(dr: number) {
         }
     }
 }
+
 function updCols(dc: number) {
-    [...SHEET.children].map(row => {
+    Array.from(SHEET.children).forEach(row => {
         for (let _ = 0; _ < Math.abs(dc); _++) {
             if (dc > 0) {
                 let newCell = document.createElement("span")
@@ -133,13 +130,19 @@ function updCols(dc: number) {
     })
 }
 
+// should be proportional to number of cells traversed
+function calcFadeOut() {
+    let val = parseInt(SPEED.value) * product() / gcd() / 25
+    FADEOUT.value = String(val)
+    ROOT.style.setProperty('--fade-out', val + 'ms');
+}
 
 function loop() {
     setTimeout(function () {
         tick = tick % product()
         // console.log(tick);
         getCellMod(tick, tick).classList.add("fade")
-        getCellMod(tick, tick).innerHTML = tick
+        getCellMod(tick, tick).setAttribute('tick', String(tick))
         getCellMod(tick - 1, tick - 1).classList.remove("fade")
         // getCellMod(tick - 1, tick - 1).innerHTML = ""
         tick++

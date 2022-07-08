@@ -14,17 +14,16 @@ article {
           align-items: center;
 }
 
-#controls {
+fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 100%;
 }
 
-#controls > span {
+fieldset > span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,15 +36,19 @@ article {
           align-items: flex-end;
 }
 
-#controls > span:nth-of-type(1) input {
+fieldset > span > span {
+  margin: .25ch 0;
+}
+
+fieldset > span:nth-of-type(1) input {
   width: 5ch;
 }
 
-#controls > span:nth-of-type(2) input {
+fieldset > span:nth-of-type(2) input {
   width: 8ch;
 }
 
-#controls > span input:disabled {
+fieldset > span input:disabled {
   cursor: not-allowed;
 }
 
@@ -86,18 +89,35 @@ article {
 
 #sheet > div:not(:first-child) span:not(:first-child) {
   background: pink;
-  -webkit-transition: all calc(var(--fade-out) * var(--product));
-  transition: all calc(var(--fade-out) * var(--product));
+  -webkit-transition: background calc(var(--fade-out) * var(--product));
+  transition: background calc(var(--fade-out) * var(--product));
+  -webkit-transition-property: background, -webkit-filter;
+  transition-property: background, -webkit-filter;
+  transition-property: background, filter;
+  transition-property: background, filter, -webkit-filter;
   -webkit-filter: hue-rotate(0);
           filter: hue-rotate(0);
 }
 
 #sheet > div:not(:first-child) span:not(:first-child).fade {
   background: green;
-  -webkit-transition: all calc(var(--fade-in) * var(--product));
-  transition: all calc(var(--fade-in) * var(--product));
+  -webkit-transition: background calc(var(--fade-in) * var(--product));
+  transition: background calc(var(--fade-in) * var(--product));
+  -webkit-transition-property: background, -webkit-filter;
+  transition-property: background, -webkit-filter;
+  transition-property: background, filter;
+  transition-property: background, filter, -webkit-filter;
   -webkit-filter: hue-rotate(180deg);
           filter: hue-rotate(180deg);
+}
+
+#sheet > div:not(:first-child) span:not(:first-child):hover::before {
+  content: counter(row) "," counter(col);
+  z-index: 1;
+}
+
+#sheet > div:not(:first-child) span:not(:first-child)::before {
+  content: attr(tick);
 }
 
 #sheet > div:not(:first-child) span:first-child {
@@ -107,11 +127,6 @@ article {
 
 #sheet > div:not(:first-child) span:first-child::before {
   content: counter(row);
-}
-
-#sheet > div:not(:first-child) span:hover::before {
-  content: counter(row) "," counter(col);
-  z-index: 1;
 }
 
 #sheet > div:first-child span:not(:first-child) {

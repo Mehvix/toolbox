@@ -10,15 +10,18 @@ article
     flex-direction: column
     align-items: center
 
-#controls
+fieldset
     display: flex
-    justify-content: space-between
+    justify-content: space-around
     width: 100%
 
     & > span
         display: flex
         flex-direction: column
         align-items: flex-end
+
+        & > span
+            margin: .25ch 0
 
         &:nth-of-type(1)
             input
@@ -55,23 +58,30 @@ article
 
                 &:not(:first-child)
                     background: pink
-                    transition: all calc(var(--fade-out) * var(--product))
+                    transition: background calc(var(--fade-out) * var(--product))
+                    transition-property: background, filter
                     filter: hue-rotate(0)
 
                     &.fade
                         background: green
-                        transition: all calc(var(--fade-in) * var(--product))
+                        transition: background calc(var(--fade-in) * var(--product))
+                        transition-property: background, filter
+                        // transition-property: inherit
                         filter: hue-rotate(180deg)
+
+                    &:hover
+                        &::before
+                            content: counter(row) "," counter(col)
+                            z-index: 1
+
+                    &::before
+                        content: attr(tick)
 
                 &:first-child
                     background: black
                     color: white
                     &::before
                         content: counter(row)
-
-                &:hover::before
-                    content: counter(row) "," counter(col)
-                    z-index: 1
 
         &:first-child span
             &:not(:first-child)
