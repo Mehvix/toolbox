@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>" />
+    <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
+    <script src="https://www.mehvix.com/static/js/include.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="../main.css" />
+    <link type="text/css" rel="stylesheet" href="rsa.css" />
+    <script defer src="rsa.js"></script>
+    <meta charset="utf-8" />
+    <title>Mehvix | RSA Encoder</title>
+    <style>
+        :root {
+            --outside-bg-color: rgb(3, 27, 80);
+        }
+
+    </style>
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ],
+            },
+            svg: {
+                fontCache: "global",
+            },
+            loader: { load: ["input/tex", "output/svg"] },
+        };
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="nav">
+            <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a>/<a href="" class="inverse-bg">RSA
+                Encoder</a>
+        </div>
+
+        <article>
+            <fieldset id="settings">
+                <legend>Settings</legend>
+                <span>
+                    <form oninput=findPHIN()>
+                        <span>
+                            <label for="p">$P$:</label>
+                            <input type="number" name="p" id="p" min=3 value=101 step=2>
+                        </span>
+                        <span>
+                            <label for="q">$Q$:</label>
+                            <input type="number" name="q" id="q" min=3 value=191 step=2>
+                        </span>
+                        </>
+                    </form>
+                    <span>
+                        <label for="choose">$(e,d)$:</label>
+                        <select name="choose" id="choose" required oninput=setED()>
+                        </select>
+                    </span>
+                </span>
+                <span>
+                    <span>
+                        <label for="n">$N$ = $PQ$ =</label>
+                        <input type="number" name="n" id="n" disabled>
+                    </span>
+                    <span>
+                        <label for="phi">$\varphi (N)$ = </label>
+                        <input type="number" name="phi" id="phi" disabled>
+                    </span>
+                </span>
+            </fieldset>
+            <fieldset id="messaging">
+                <legend>Messaging</legend>
+                <form oninput=parseMsg()>
+                    <span><label for="raw">Raw: $x$</label><textarea name="inp" id="inp" rows="5"></textarea></span>
+                    <span>
+                        <span>
+                            <label for="enc">Encrypted: $E(x) = x^e \text{ (mod } N) = y$</label>
+                            <textarea name="enc" id="enc" rows="5" disabled></textarea>
+                        </span>
+                        <span>
+                            <label for="enc">Decrypted: $D(y) = y^d \text{ (mod } N)$</label>
+                            <textarea name="dec" id="dec" rows="5" disabled></textarea>
+                        </span>
+                    </span>
+                </form>
+            </fieldset>
+        </article>
+
+        <div id="footer">
+            <table id="footerTable">
+                <tr>
+                    <td>$BTC</td>
+                    <td>15adHcuUPLHzVmUqKqgeLfLzvtfD5r7WJ1</td>
+                </tr>
+                <tr>
+                    <td>$XMR</td>
+                    <td>45MaKMYnWBnNWS4rtbrMp8C6wL1B1mguW6AjmJBGqLJkCzVUMuXwamzRfrmiwLw1WrbUptNjY1DoL4Yu4fXqTDAcDEWpuTZ
+                    </td>
+                </tr>
+                <tr>
+                    <td>$ETH</td>
+                    <td>0xeeC384Cdef3aD975EdF1D2f6C1dC9a4b1fEEBF74</td>
+                </tr>
+                <tr>
+                    <td id="footerDateYear">2021</td>
+                    <td>Max Vogel</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
