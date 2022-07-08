@@ -1,5 +1,8 @@
 {
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "liveServer.settings.port": 7001,
-    "liveServer.settings.root": "/docs/"
+    "liveServer.settings.root": "/docs/",
+    "liveSassCompile.settings.excludeList": [
+        "/docs/onedark/onedark.sass",
+    ]
 }
