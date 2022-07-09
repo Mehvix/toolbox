@@ -78,20 +78,18 @@
             </fieldset>
             <fieldset id="messaging">
                 <legend>Messaging</legend>
-                <form oninput=parseMsg()>
-                    <span><label for="raw">Raw: $x \leq N-1$</label><textarea name="inp" id="inp"
-                            rows="5"></textarea></span>
-                    <span>
-                        <span>
-                            <label for="enc">Encrypted: $E(x) = x^e \text{ (mod } N) = y$</label>
-                            <textarea name="enc" id="enc" rows="5" disabled></textarea>
-                        </span>
-                        <span>
-                            <label for="enc">Decrypted: $D(y) = y^d \text{ (mod } N)$</label>
-                            <textarea name="dec" id="dec" rows="5" disabled></textarea>
-                        </span>
-                    </span>
-                </form>
+                <span>
+                    <label for="raw">Raw: $x \leq N-1$</label>
+                    <textarea name="inp" id="inp" rows="2" oninput=parseMsg()></textarea></span>
+                <span>
+                    <label for="enc">Encrypted: $E(x) = x^e \text{ (mod } N) = y$</label>
+                    <textarea name="enc" id="enc" rows="2" oninput=parseEnc()></textarea>
+                </span>
+                <span>
+                    <label for="enc">Decrypted: $D(y) = y^d \text{ (mod } N)$</label>
+                    <textarea name="dec" id="dec" rows="2" disabled></textarea>
+                </span>
+                </span>
             </fieldset>
         </article>
 
