@@ -15,37 +15,32 @@ var phi = -1;
 var e = -1;
 var d = -1;
 function findPHIN() {
-    let np = parseInt(P.value);
-    let nq = parseInt(Q.value);
+    let np = Math.max(3, parseInt(P.value));
+    let nq = Math.max(3, parseInt(Q.value));
     if (!isPrime(np)) {
-        if (np - p > 0) {
+        if (np - p > 0)
             np = nextPrime(np);
-        }
-        else {
+        else
             np = prevPrime(np);
-        }
-        P.value = String(np);
     }
     if (!isPrime(nq)) {
-        if (nq - q > 0) {
+        if (nq - q > 0)
             nq = nextPrime(nq);
-        }
-        else {
+        else
             nq = prevPrime(nq);
-        }
-        Q.value = String(nq);
     }
     p = np;
     q = nq;
     n = p * q;
     phi = (p - 1) * (q - 1);
+    P.value = String(p);
+    Q.value = String(q);
     N.value = String(n);
     PHI.value = String(phi);
     while (CHOOSE.firstChild) {
         CHOOSE.removeChild(CHOOSE.firstChild);
     }
-    let i = 1;
-    for (let _ = 0; _ < 10; i += phi) {
+    for (let _ = 0, i = 1; _ < 10; i += phi) {
         let facts = primeFactors(i);
         if (facts.length === 2) {
             CHOOSE.appendChild(new Option(`${facts} : ${i}`, String(facts)));
@@ -103,6 +98,7 @@ function parseMsg() {
     ENC.value = String(pass1);
     DEC.value = String(pass2);
 }
+// https://www.eecs70.org/assets/pdf/notes/n6.pdf#page3
 function powMod(x, y, m) {
     if (y === 0)
         return 1;

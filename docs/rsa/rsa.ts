@@ -18,24 +18,16 @@ var e = -1
 var d = -1
 
 function findPHIN() {
-    let np = parseInt(P.value)
-    let nq = parseInt(Q.value)
+    let np = Math.max(3, parseInt(P.value))
+    let nq = Math.max(3, parseInt(Q.value))
 
     if (!isPrime(np)) {
-        if (np - p > 0) {
-            np = nextPrime(np)
-        } else {
-            np = prevPrime(np)
-        }
-        P.value = String(np)
+        if (np - p > 0) np = nextPrime(np)
+        else np = prevPrime(np)
     }
     if (!isPrime(nq)) {
-        if (nq - q > 0) {
-            nq = nextPrime(nq)
-        } else {
-            nq = prevPrime(nq)
-        }
-        Q.value = String(nq)
+        if (nq - q > 0) nq = nextPrime(nq)
+        else nq = prevPrime(nq)
     }
 
     p = np
@@ -44,6 +36,9 @@ function findPHIN() {
     n = p * q
     phi = (p - 1) * (q - 1)
 
+    P.value = String(p)
+    Q.value = String(q)
+
     N.value = String(n)
     PHI.value = String(phi)
 
@@ -51,8 +46,7 @@ function findPHIN() {
         CHOOSE.removeChild(CHOOSE.firstChild);
     }
 
-    let i = 1
-    for (let _ = 0; _ < 10; i += phi) {
+    for (let _ = 0, i = 1; _ < 10; i += phi) {
         let facts = primeFactors(i)
         if (facts.length === 2) {
             CHOOSE.appendChild(new Option(`${facts} : ${i}`, String(facts)))
@@ -85,7 +79,6 @@ function primeFactors(n: number) {
 
 function nextPrime(n: number): number {
     if (n <= 1) return 2;
-
     while (true) {
         n++;
         if (isPrime(n)) return n;
@@ -114,6 +107,7 @@ function parseMsg() {
     DEC.value = String(pass2)
 }
 
+// https://www.eecs70.org/assets/pdf/notes/n6.pdf#page3
 function powMod(x: number, y: number, m: number): number {
     if (y === 0) return 1
     x = x % m
