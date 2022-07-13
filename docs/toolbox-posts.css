@@ -1,6 +1,4 @@
 @charset "UTF-8";
-/* BG Shadow CSS */
-/* todo this sucks but is okay atm */
 #ical-generator > a {
   -webkit-box-shadow: inherit;
           box-shadow: inherit;
@@ -192,6 +190,7 @@
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   background-color: transparent;
+  margin-left: 1ch;
 }
 
 #color-picker > a::before {
