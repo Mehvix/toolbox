@@ -1,0 +1,82 @@
+/* BG Shadow CSS */
+/* todo this sucks but is okay atm */
+
+@mixin post($color, $text: var(--inside-bg-color), $marker: "*")
+    & > a
+        box-shadow: inherit
+        box-shadow: inset 0 -0.14em 0 $color
+        margin-left: 1ch
+
+        &:hover
+            background-color: $color
+            color: $text
+            // mix-blend-mode: difference
+
+    &::marker
+        // color: $color
+        content: $marker + "\FE0F" !important // css doesn't respect \fe0f
+        font-family: FontAwesome
+
+#ical-generator
+    @include post(rgb(255, 219, 151), var(--text), "🗓️")
+
+#lorenz
+    @include post(rgb(167, 94, 160), $marker: "🦋")
+
+#mline
+    @include post(rgb(78, 76, 221), $marker: "\2702")
+
+#mod-sheet
+    @include post(rgb(0, 134, 101), $marker: "🧮")
+
+#onedark
+    @include post(#636d83, $marker: "🌃")
+
+#points
+    @include post(rgb(255, 245, 186), var(--text), $marker: "🎨")
+
+#poker-range
+    @include post(rgb(92, 0, 0), $marker: "🎲")
+
+#resistor
+    @include post(rgb(15, 98, 66), $marker: "⚡")
+
+#rsa
+    @include post(rgb(3, 27, 80), $marker: "🔐")
+
+#screw-and-drill
+    @include post(rgb(103, 102, 201), $marker: "🪛")
+
+#color-picker
+    --grad: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%,rgba(255, 154, 0, 1) 10%,rgba(208, 222, 33, 1) 20%,rgba(79, 220, 74, 1) 30%,rgba(63, 218, 216, 1) 40%,rgba(47, 201, 226, 1) 50%,rgba(28, 127, 238, 1) 60%,rgba(95, 21, 242, 1) 70%,rgba(186, 12, 248, 1) 80%,rgba(251, 7, 217, 1) 90%)//, rgba(255, 0, 0, 1) 100%
+
+    & > a
+        box-shadow: none !important
+        // box-shadow: inset 0 -0.14em 0 var(--grad)
+        position: relative
+        transition: all 200ms ease-in-out
+        background-color: transparent
+
+        &::before
+            content: ''
+            position: absolute
+            display: revert
+            width: 12ch
+            background: var(--grad)
+            height: .2em
+            margin-top: 2ch
+
+        &:hover
+            box-shadow: none
+            background-color: transparent
+
+            background-image: var(--grad)
+            background-size: 100%
+            background-repeat: repeat
+            // &::before
+            //     display: inline-block
+            // height: 1.2em
+            // margin-top: 0ch
+
+    &::marker
+        content: "🌈" + "\FE0F " !important

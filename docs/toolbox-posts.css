@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/* BG Shadow CSS */
+/* todo this sucks but is okay atm */
+#ical-generator > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #ffdb97;
+          box-shadow: inset 0 -0.14em 0 #ffdb97;
+  margin-left: 1ch;
+}
+
+#ical-generator > a:hover {
+  background-color: #ffdb97;
+  color: var(--text);
+}
+
+#ical-generator::marker {
+  content: "🗓️️" !important;
+  font-family: FontAwesome;
+}
+
+#lorenz > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #a75ea0;
+          box-shadow: inset 0 -0.14em 0 #a75ea0;
+  margin-left: 1ch;
+}
+
+#lorenz > a:hover {
+  background-color: #a75ea0;
+  color: var(--inside-bg-color);
+}
+
+#lorenz::marker {
+  content: "🦋️" !important;
+  font-family: FontAwesome;
+}
+
+#mline > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #4e4cdd;
+          box-shadow: inset 0 -0.14em 0 #4e4cdd;
+  margin-left: 1ch;
+}
+
+#mline > a:hover {
+  background-color: #4e4cdd;
+  color: var(--inside-bg-color);
+}
+
+#mline::marker {
+  content: "✂️" !important;
+  font-family: FontAwesome;
+}
+
+#mod-sheet > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #008665;
+          box-shadow: inset 0 -0.14em 0 #008665;
+  margin-left: 1ch;
+}
+
+#mod-sheet > a:hover {
+  background-color: #008665;
+  color: var(--inside-bg-color);
+}
+
+#mod-sheet::marker {
+  content: "🧮️" !important;
+  font-family: FontAwesome;
+}
+
+#onedark > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #636d83;
+          box-shadow: inset 0 -0.14em 0 #636d83;
+  margin-left: 1ch;
+}
+
+#onedark > a:hover {
+  background-color: #636d83;
+  color: var(--inside-bg-color);
+}
+
+#onedark::marker {
+  content: "🌃️" !important;
+  font-family: FontAwesome;
+}
+
+#points > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #fff5ba;
+          box-shadow: inset 0 -0.14em 0 #fff5ba;
+  margin-left: 1ch;
+}
+
+#points > a:hover {
+  background-color: #fff5ba;
+  color: var(--text);
+}
+
+#points::marker {
+  content: "🎨️" !important;
+  font-family: FontAwesome;
+}
+
+#poker-range > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #5c0000;
+          box-shadow: inset 0 -0.14em 0 #5c0000;
+  margin-left: 1ch;
+}
+
+#poker-range > a:hover {
+  background-color: #5c0000;
+  color: var(--inside-bg-color);
+}
+
+#poker-range::marker {
+  content: "🎲️" !important;
+  font-family: FontAwesome;
+}
+
+#resistor > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #0f6242;
+          box-shadow: inset 0 -0.14em 0 #0f6242;
+  margin-left: 1ch;
+}
+
+#resistor > a:hover {
+  background-color: #0f6242;
+  color: var(--inside-bg-color);
+}
+
+#resistor::marker {
+  content: "⚡️" !important;
+  font-family: FontAwesome;
+}
+
+#rsa > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #031b50;
+          box-shadow: inset 0 -0.14em 0 #031b50;
+  margin-left: 1ch;
+}
+
+#rsa > a:hover {
+  background-color: #031b50;
+  color: var(--inside-bg-color);
+}
+
+#rsa::marker {
+  content: "🔐️" !important;
+  font-family: FontAwesome;
+}
+
+#screw-and-drill > a {
+  -webkit-box-shadow: inherit;
+          box-shadow: inherit;
+  -webkit-box-shadow: inset 0 -0.14em 0 #6766c9;
+          box-shadow: inset 0 -0.14em 0 #6766c9;
+  margin-left: 1ch;
+}
+
+#screw-and-drill > a:hover {
+  background-color: #6766c9;
+  color: var(--inside-bg-color);
+}
+
+#screw-and-drill::marker {
+  content: "🪛️" !important;
+  font-family: FontAwesome;
+}
+
+#color-picker {
+  --grad: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%,rgba(255, 154, 0, 1) 10%,rgba(208, 222, 33, 1) 20%,rgba(79, 220, 74, 1) 30%,rgba(63, 218, 216, 1) 40%,rgba(47, 201, 226, 1) 50%,rgba(28, 127, 238, 1) 60%,rgba(95, 21, 242, 1) 70%,rgba(186, 12, 248, 1) 80%,rgba(251, 7, 217, 1) 90%);
+}
+
+#color-picker > a {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  position: relative;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  background-color: transparent;
+}
+
+#color-picker > a::before {
+  content: '';
+  position: absolute;
+  display: revert;
+  width: 12ch;
+  background: var(--grad);
+  height: .2em;
+  margin-top: 2ch;
+}
+
+#color-picker > a:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  background-image: var(--grad);
+  background-size: 100%;
+  background-repeat: repeat;
+}
+
+#color-picker::marker {
+  content: "🌈️" !important;
+}
+/*# sourceMappingURL=toolbox-posts.css.map */

@@ -12,9 +12,9 @@ FADEOUT.addEventListener("input", calcFadeOut);
 SPEED.addEventListener("input", calcFadeOut);
 FADEIN.dispatchEvent(new Event('input'));
 FADEOUT.dispatchEvent(new Event('input'));
-ROWS.addEventListener('input', this.upd);
-COLS.addEventListener('input', this.upd);
-this.upd();
+ROWS.addEventListener('input', this.updSheet);
+COLS.addEventListener('input', this.updSheet);
+this.updSheet();
 function euclids(x, y) {
     if (y === 0) {
         return x;
@@ -57,7 +57,7 @@ function numCols() {
         return SHEET.firstElementChild?.childElementCount - 1;
     }
 }
-function upd() {
+function updSheet() {
     let old_r = numRows();
     let old_c = numCols();
     let new_r = parseInt(ROWS.value);

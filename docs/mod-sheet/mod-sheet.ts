@@ -14,9 +14,9 @@ SPEED.addEventListener("input", calcFadeOut)
 FADEIN.dispatchEvent(new Event('input'))
 FADEOUT.dispatchEvent(new Event('input'))
 
-ROWS.addEventListener('input', this.upd)
-COLS.addEventListener('input', this.upd)
-this.upd()
+ROWS.addEventListener('input', this.updSheet)
+COLS.addEventListener('input', this.updSheet)
+this.updSheet()
 
 function euclids(x: number, y: number): number {
     if (y === 0) {
@@ -65,7 +65,7 @@ function numCols(): number {
     }
 }
 
-function upd() {
+function updSheet() {
     let old_r = numRows()
     let old_c = numCols()
     let new_r = parseInt(ROWS.value)

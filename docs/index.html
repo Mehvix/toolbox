@@ -3,6 +3,7 @@
 
 <head>
     <link type="text/css" rel="stylesheet" href="https://www.mehvix.com/static/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="toolbox-posts.css" />
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>" />
 
@@ -11,11 +12,15 @@
     <title>Mehvix | Toolbox</title>
     <style>
         :root {
-            --outside-bg-color: #00727c;
+            --outside-bg-color: #e0d100;
         }
 
         li::marker {
-            content: "* " !important;
+            content: "*" !important;
+        }
+
+        li>a {
+            margin-left: 1ch
         }
 
     </style>
@@ -29,38 +34,38 @@
         <hr>
         <article>
             <ul>
-                <li><a href="resistor/">Resistor Calculator</a></li>
-                <li>
+                <li id="resistor"><a href="resistor/">Resistor Calculator</a></li>
+                <li id="screw-and-drill">
                     <a href="screw-and-drill/">Screw and Drill Helper</a>
                 </li>
-                <li><a href="color-picker/">Color Picker</a></li>
-                <li>
+                <li id="color-picker"><a href="color-picker/">Color Picker</a></li>
+                <li id="ical-generator">
                     <a href="ical-generator/">Google Calendar iCal Generator</a>
                 </li>
-                <li>
+                <li id="poker-range">
                     <a href="poker-range/">Poker Range Calculator</a>
                 </li>
-                <li>
+                <li id="onedark">
                     <a href="onedark/">OneDark Theme Colors</a>
                 </li>
-                <li>
+                <li id="points">
                     <a href="points/">Point Paint</a>
                 </li>
-                <li>
+                <li id="lorenz">
                     <a href="lorenz/">Lorenz</a>
                 </li>
-                <li>
+                <li id="mline">
                     <a href="mline/">Multiline String Converter</a>
                 </li>
-                <li>
+                <li id="mod-sheet">
                     <a href="mod-sheet/">Modulo Sheet (CRT Visualizer)</a>
                 </li>
-                <li>
+                <li id="rsa">
                     <a href="rsa/">RSA Encoder</a>
                 </li>
                 <!--
-                <li><a href="morse/">Morse Code Decipher</a></li>
-                <li><a href="gearbox/">Gearbox Calculator</a></li>-->
+                <li id="morse"><a href="morse/">Morse Code Decipher</a></li>
+                <li id="gearbox"><a href="gearbox/">Gearbox Calculator</a></li>-->
             </ul>
 
             <br />
