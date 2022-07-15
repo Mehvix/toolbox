@@ -31,6 +31,9 @@
 #settings > span > span,
 #settings > span > form {
   margin: .25ch 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 #settings input {
