@@ -1,53 +1,33 @@
+div.box {
+  overflow: unset;
+}
+
 article {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 fieldset {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   width: 100%;
 }
-
 fieldset > span {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
 }
-
 fieldset > span > span {
-  margin: .25ch 0;
+  margin: 0.25ch 0;
 }
-
 fieldset > span:nth-of-type(1) input {
   width: 5ch;
 }
-
 fieldset > span:nth-of-type(2) input {
   width: 8ch;
 }
-
 fieldset > span input:disabled {
   cursor: not-allowed;
 }
@@ -55,90 +35,60 @@ fieldset > span input:disabled {
 #sheet {
   margin: 1ch;
 }
-
 #sheet > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 #sheet > div > span {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-align: center;
   width: 4ch;
   min-width: 4ch;
   max-width: 4ch;
   height: 4ch;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #sheet > div:not(:nth-of-type(1)):not(:nth-of-type(2)) {
   counter-increment: row;
 }
-
 #sheet > div:not(:first-child) span:not(:nth-of-type(1)):not(:nth-of-type(2)) {
   counter-increment: col;
 }
-
 #sheet > div:not(:first-child) span:not(:first-child) {
   background: pink;
-  -webkit-transition: background calc(var(--fade-out) * var(--product));
   transition: background calc(var(--fade-out) * var(--product));
-  -webkit-transition-property: background, -webkit-filter;
-  transition-property: background, -webkit-filter;
   transition-property: background, filter;
-  transition-property: background, filter, -webkit-filter;
-  -webkit-filter: hue-rotate(0);
-          filter: hue-rotate(0);
+  filter: hue-rotate(0);
 }
-
 #sheet > div:not(:first-child) span:not(:first-child).fade {
   background: green;
-  -webkit-transition: background calc(var(--fade-in) * var(--product));
   transition: background calc(var(--fade-in) * var(--product));
-  -webkit-transition-property: background, -webkit-filter;
-  transition-property: background, -webkit-filter;
   transition-property: background, filter;
-  transition-property: background, filter, -webkit-filter;
-  -webkit-filter: hue-rotate(180deg);
-          filter: hue-rotate(180deg);
+  filter: hue-rotate(180deg);
 }
-
 #sheet > div:not(:first-child) span:not(:first-child):hover::before {
   content: counter(row) "," counter(col);
   z-index: 1;
 }
-
 #sheet > div:not(:first-child) span:not(:first-child)::before {
   content: attr(tick);
 }
-
 #sheet > div:not(:first-child) span:first-child {
   background: black;
   color: white;
 }
-
 #sheet > div:not(:first-child) span:first-child::before {
   content: counter(row);
 }
-
 #sheet > div:first-child span:not(:first-child) {
   background: black;
   color: white;
 }
-
 #sheet > div:first-child span:not(:nth-of-type(1)):not(:nth-of-type(2)) {
   counter-increment: col;
 }
-
 #sheet > div:first-child span::before {
   content: counter(col);
 }
+
 /*# sourceMappingURL=mod-sheet.css.map */

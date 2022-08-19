@@ -17,6 +17,18 @@
             "runOptions": {
                 "runOn": "folderOpen"
             }
-        }
+        },
+        {
+            "label": "Run sass watch on startup",
+            "type": "shell",
+            "command": "sass --watch .",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
     ]
 }

@@ -144,7 +144,7 @@ window.onload = () => {
     bands.dispatchEvent(new InputEvent("input", { data: bands.value })), updateResults();
 };
 
-// Prevents following event listner from being angry
+// Prevents following event listener from being angry
 interface HTMLElementEventMap {
     input: InputEvent;
 }
@@ -241,7 +241,7 @@ function updateResults() {
 
     setValue(bandCount, `${parseInt(bands.value)}`);
     // setValue(resistanceDigits, bands.value == "4" ? "2" : "3")
-    setValue(resistance, `${Math.round(resist * 100000) / 100000}`); // round to five places
+    setValue(resistance, `${(Math.round(resist * 100000) / 100000).toLocaleString("en-US")}`); // round to five places, add commas
     setValue(tolerance, `${band5.value}`);
     setValue(toleranceValue, `${Math.round(band5.value * resist * 0.01 * 100000) / 100000}`);
     setValue(temp, bands.value == "6" ? ` and a temperature coefficient of <b>${band6.value}</b> ppm.` : ".");

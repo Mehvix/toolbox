@@ -15,11 +15,17 @@ tr:not(:first-child) {
 }
 
 /* We hide Band #3 (the third digit) if we are counting Four bands. If we labeled in static html, we'd have Band 1, ... 2, ... 4, ... 5 (missing 3) BUT if we do it like this in CSS, the counter doesn't count hidden elements!*/
-article > table tr:not(:first-child) td:nth-child(1)::after {
+article>table tr:not(:first-child) td:nth-child(1)::after {
     content: counter(list-number) ":  ";
 }
 
 input,
 select {
     width: 10ch !important;
+}
+
+#bands {
+    margin: 0;
+    border: none;
+    height: fit-content
 }

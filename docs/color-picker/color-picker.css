@@ -8,7 +8,10 @@
 }
 
 #hex {
-  width: 9ch;
+  width: 10ch;
+  height: 2.5em;
+  margin: 0.5ch;
+  border: none;
 }
 
 #rgb-r,
@@ -20,16 +23,20 @@
 #hsv-h,
 #hsv-s,
 #hsv-v {
-  width: 4.5ch;
+  width: 5.5ch;
+  border: none;
+}
+
+input:invalid {
+  border: red solid 0.5ch !important;
 }
 
 /* Hide scroller -- Firefox */
-input[type="number"] {
+input[type=number] {
   -moz-appearance: textfield;
   /* Hide scroller -- Chrome */
 }
-
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -40,19 +47,16 @@ article td:nth-of-type(1) {
   font-style: italic;
   padding-right: 2ch;
 }
-
 article td:nth-of-type(2) {
   padding-right: 10px;
 }
-
 article button {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   font-size: 14px;
   padding: 0.25ch 0.5ch;
 }
-
 article button:hover {
   background-color: var(--code-bg-color);
 }
+
 /*# sourceMappingURL=color-picker.css.map */

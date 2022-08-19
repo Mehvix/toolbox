@@ -12,19 +12,13 @@
   line-height: 1.44;
   scrollbar-width: thin;
 }
-
-*::-moz-selection {
-  background-color: var(--outside-bg-color);
-  color: var(--text-color-inverse);
-}
-
 *::selection {
   background-color: var(--outside-bg-color);
   color: var(--text-color-inverse);
 }
 
 body {
-  font-family: 'PT Mono', monospace !important;
+  font-family: "PT Mono", monospace !important;
   font-weight: 400;
   font-size: 14px;
 }
@@ -32,23 +26,17 @@ body {
 a,
 a:visited {
   text-decoration: none;
-  -webkit-box-shadow: inset 0 -0.14em 0 var(--outside-bg-color);
-          box-shadow: inset 0 -0.14em 0 var(--outside-bg-color);
+  box-shadow: inset 0 -0.14em 0 var(--outside-bg-color);
   color: black;
-  -webkit-transition-property: background-color;
   transition-property: background-color;
-  -webkit-transition-timing-function: ease-in-out;
-          transition-timing-function: ease-in-out;
-  -webkit-transition-duration: 250ms;
-          transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
 }
-
 a:hover,
 a:visited:hover {
   background-color: var(--outside-bg-color);
   color: var(--inside-bg-color);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 #container,
@@ -62,64 +50,49 @@ canvas {
 
 div.nav {
   position: relative;
-  -webkit-filter: brightness(50%);
-          filter: brightness(50%);
+  filter: brightness(50%);
   margin: 1ch;
   font-size: 115%;
 }
-
 div.nav > a {
   margin: 0 0.25em;
 }
-
 div.nav > a:first-child {
   margin-left: 0;
 }
-
 div.nav > a:last-child,
 div.nav > a strong {
   font-weight: 600;
 }
 
 details {
-  padding: .4rem .75rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 5px;
   font-size: 87% !important;
 }
-
 details[open] {
   cursor: auto;
 }
-
 details[open] summary {
   margin-bottom: 6px;
 }
-
 details[open] > *:last-child {
   margin-bottom: 0;
 }
-
 details summary {
   cursor: pointer;
   font-weight: bold;
 }
 
 code {
-  font-family: 'PT Mono', monospace !important;
+  font-family: "PT Mono", monospace !important;
   padding: 2px 4px;
   font-size: 90%;
   border-radius: 5px;
 }
-
-code::-moz-selection,
-code > span::-moz-selection {
+code::selection, code > span::selection {
   color: limegreen !important;
   background: black !important;
 }
 
-code::selection,
-code > span::selection {
-  color: limegreen !important;
-  background: black !important;
-}
 /*# sourceMappingURL=points.css.map */
