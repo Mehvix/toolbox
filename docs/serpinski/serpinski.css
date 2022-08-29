@@ -1,0 +1,57 @@
+* {
+  color: white !important;
+}
+* a:hover, *::selection {
+  color: lime !important;
+  transition-duration: 0;
+}
+
+a {
+  box-shadow: inset 0 -0.14em 0 white;
+}
+a:hover {
+  box-shadow: inset 0 -0.14em 0 lime;
+}
+
+body {
+  max-width: min(80vw, 80vh);
+}
+
+#res {
+  color: black !important;
+  border: unset;
+  background: white;
+  width: 8ch;
+  height: unset;
+  border-radius: unset;
+}
+
+#serpinski-triangle > div {
+  background: yellow;
+  margin: 2.5em auto;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1/1;
+  max-height: fit-content;
+}
+#serpinski-triangle > div div {
+  height: 50%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+}
+#serpinski-triangle > div:before, #serpinski-triangle > div div:before {
+  background: black;
+  bottom: 0;
+  left: 0;
+  content: "";
+  display: block;
+  height: 141.4213562373%;
+  position: absolute;
+  transform: rotate(45deg);
+  transform-origin: 0 100%;
+  width: 70.7106781187%;
+}
+
+/*# sourceMappingURL=serpinski.css.map */

@@ -1,0 +1,54 @@
+@use "sass:math"
+
+*
+    color: white !important
+
+    a:hover, &::selection
+        color: lime !important
+        transition-duration: 0
+
+a
+    box-shadow: inset 0 -0.14em 0 white
+
+    &:hover
+        box-shadow: inset 0 -0.14em 0 lime
+
+body
+    max-width: min(80vw, 80vh)
+
+#res
+    color: black !important
+    border: unset
+    background: white
+    width: 8ch
+    height: unset
+    border-radius: unset
+
+#serpinski-triangle > div
+    background: yellow
+    margin: 2.5em auto
+    overflow: hidden
+    position: relative
+
+    aspect-ratio: 1/1
+    max-height: fit-content
+    // max-width: 50%
+
+    & div
+        height: 50%
+        float: left
+        overflow: hidden
+        position: relative
+        width: 50%
+
+    &:before, & div:before
+        background: black
+        bottom: 0
+        left: 0
+        content: ""
+        display: block
+        height: math.sqrt(2) * 100%
+        position: absolute
+        transform: rotate(45deg)
+        transform-origin: 0 100%
+        width: 100% / math.sqrt(2)
