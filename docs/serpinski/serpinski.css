@@ -3,7 +3,6 @@
 }
 * a:hover, *::selection {
   color: lime !important;
-  transition-duration: 0;
 }
 
 a {
@@ -11,6 +10,7 @@ a {
 }
 a:hover {
   box-shadow: inset 0 -0.14em 0 lime;
+  transition-duration: 0;
 }
 
 body {
@@ -26,9 +26,19 @@ body {
   border-radius: unset;
 }
 
+article {
+  display: flex;
+  justify-content: center;
+}
+
+#serpinski-triangle {
+  transform: scaley(1.6180339887) rotate(45deg);
+  overflow: hidden;
+  width: 70.7106781187%;
+  margin-top: 50%;
+}
 #serpinski-triangle > div {
   background: yellow;
-  margin: 2.5em auto;
   overflow: hidden;
   position: relative;
   aspect-ratio: 1/1;
@@ -43,12 +53,12 @@ body {
 }
 #serpinski-triangle > div:before, #serpinski-triangle > div div:before {
   background: black;
+  position: absolute;
   bottom: 0;
   left: 0;
   content: "";
   display: block;
   height: 141.4213562373%;
-  position: absolute;
   transform: rotate(45deg);
   transform-origin: 0 100%;
   width: 70.7106781187%;
