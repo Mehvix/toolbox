@@ -9,12 +9,12 @@ class Card:
             raise Exception('Index when initializing Card class out of range!')
         self.value: str = CARDS[i]
         self.suit: str = SUITS[j]
-    
+
     def print(self) -> None:
         print(self.suit + " " + self.value)
 
 
-class Deck:        
+class Deck:
     def __init__(self) -> None:
         self.cards = []
         for j in range(len(SUITS)):
@@ -34,5 +34,4 @@ class Deck:
 
 if __name__ == "__main__":
     DECK = Deck()
-    DECK.shuffle()``
-    
+    DECK.shuffle()
