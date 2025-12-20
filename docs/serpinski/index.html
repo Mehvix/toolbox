@@ -12,10 +12,10 @@
     <meta charset="utf-8" />
     <title>Mehvix | CSS Sierpiński Triangle</title>
     <style>
-    :root {
-        --outside-bg-color: rgb(0, 0, 0);
-        --inside-bg-color: #000000;
-    }
+        :root {
+            --outside-bg-color: rgb(0, 0, 0);
+            --inside-bg-color: #000000;
+        }
 
     </style>
 </head>
@@ -24,22 +24,29 @@
 <body>
     <div class="box">
         <div class="nav">
-            <a href="https://www.mehvix.com">~</a>/<a href="../">Toolbox</a>/<a href="">CSS Sierpiński Triangle</a>
-            <div style="float:right">
-                <label for="res">Resolution:</label>
-                <input type="number" name="res" id="res" min="0" max="9">
-            </div>
+            <div></div>
+            <span>
+                <span>
+                    <a href="https://www.mehvix.com">Home</a> > <a href="../">Toolbox</a> > <a href="">CSS Sierpiński
+                        Triangle</a>
+                    <div style="float:right">
+                        <label for="res">Resolution:</label>
+                        <input type="number" name="res" id="res" min="0" max="9">
+                </span>
+            </span>
+            <div></div>
         </div>
+    </div>
 
-        <p>
-            See <a href="./serpinski.sass">serpinski.sass</a> for styling and <a href="./serpinski.ts">serpinski.ts</a>
-            for div generation.
-        </p>
-        <article>
-            <!-- beautify ignore:start -->
+    <p>
+        See <a href="./serpinski.sass">serpinski.sass</a> for styling and <a href="./serpinski.ts">serpinski.ts</a>
+        for div generation.
+    </p>
+    <article>
+        <!-- beautify ignore:start -->
             <div id="serpinski-triangle"><div></div></div>
             <!-- beautify ignore:end -->
-        </article>
+    </article>
     </div>
 </body>
 
